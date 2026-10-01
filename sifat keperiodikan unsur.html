@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<title>🌊 KEPERIODIKAN UNSUR | Kimia Kelas X</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Nunito:wght@400;600;700;800;900&family=Amiri:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet" />
+<style>
+    :root {
+        --primary: #0891b2;
+        --primary-light: #67e8f9;
+        --primary-dark: #155e75;
+        --secondary: #059669;
+        --secondary-light: #6ee7b7;
+        --accent: #f59e0b;
+        --accent-light: #fcd34d;
+        --rose: #e11d48;
+        --rose-light: #fda4af;
+        --sky: #0284c7;
+        --violet: #7c3aed;
+        --text: #082f49;
+        --text-light: #64748b;
+        --bg-soft: #ecfeff;
+        --shadow-sm: 0 2px 8px rgba(8,145,178,0.08);
+        --shadow-lg: 0 12px 36px rgba(8,145,178,0.18);
+        --radius: 20px;
+        --radius-lg: 28px;
+        --radius-xl: 36px;
+        --radius-full: 50px;
+        --font-main: 'Nunito', sans-serif;
+        --font-display: 'Fredoka One', 'Quicksand', sans-serif;
+        --font-arabic: 'Amiri', serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: var(--font-main);
+        background: linear-gradient(135deg, #ecfeff 0%, #cffafe 25%, #d1fae5 50%, #fef3c7 75%, #e0f2fe 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 18s ease infinite;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        20% { background-position: 100% 0%; }
+        40% { background-position: 100% 100%; }
+        60% { background-position: 0% 100%; }
+        80% { background-position: 0% 0%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .floating-shapes {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .shape {
+        position: absolute; border-radius: 50%;
+        opacity: 0.16;
+        animation: floatShape 14s ease-in-out infinite;
+    }
+    .shape:nth-child(1) { width: 180px; height: 180px; background: var(--primary); top: 8%; left: 3%; animation-delay: 0s; }
+    .shape:nth-child(2) { width: 140px; height: 140px; background: var(--secondary); top: 65%; right: 5%; animation-delay: -4s; border-radius: 30% 70% 50% 50%; }
+    .shape:nth-child(3) { width: 110px; height: 110px; background: var(--accent); bottom: 12%; left: 12%; animation-delay: -7s; border-radius: 60% 40% 30% 70%; }
+    .shape:nth-child(4) { width: 160px; height: 160px; background: var(--sky); top: 30%; right: 18%; animation-delay: -10s; }
+    .shape:nth-child(5) { width: 100px; height: 100px; background: var(--violet); top: 78%; left: 45%; animation-delay: -5s; border-radius: 40% 60% 70% 30%; }
+
+    @keyframes floatShape {
+        0%,100% { transform: translate(0,0) rotate(0deg) scale(1); }
+        25% { transform: translate(35px,-45px) rotate(90deg) scale(1.15); }
+        50% { transform: translate(-25px,25px) rotate(180deg) scale(0.9); }
+        75% { transform: translate(20px,40px) rotate(270deg) scale(1.1); }
+    }
+
+    .app-container {
+        position: relative; z-index: 1;
+        width: 100%; max-width: 1150px;
+        background: rgba(255,255,255,0.82);
+        backdrop-filter: blur(24px);
+        border-radius: var(--radius-xl);
+        padding: 2.5rem 2rem;
+        box-shadow: 0 20px 60px rgba(8,145,178,0.12), inset 0 0 0 2px rgba(255,255,255,0.85);
+        display: flex; flex-direction: column; align-items: center;
+        min-height: 88vh; justify-content: space-between;
+    }
+
+    .slide-content {
+        width: 100%; flex-grow: 1;
+        display: none; flex-direction: column;
+        align-items: center; justify-content: center;
+        animation: popIn 0.5s ease;
+        overflow-y: auto; padding: 1rem 0;
+    }
+    .slide-content.active { display: flex; }
+    @keyframes popIn {
+        0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .atom-spinner {
+        position: relative; width: 180px; height: 180px;
+        margin-bottom: 1.2rem;
+        display: flex; justify-content: center; align-items: center;
+    }
+    .atom-spinner .orbit {
+        position: absolute;
+        border: 3px solid transparent;
+        border-radius: 50%;
+        animation: spin 6s linear infinite;
+    }
+    .atom-spinner .orbit:nth-child(1) { width: 100%; height: 100%; border-top-color: var(--primary); border-right-color: var(--primary-light); animation-duration: 5s; }
+    .atom-spinner .orbit:nth-child(2) { width: 75%; height: 75%; border-top-color: var(--secondary); border-left-color: var(--secondary-light); animation-duration: 4s; animation-direction: reverse; }
+    .atom-spinner .orbit:nth-child(3) { width: 50%; height: 50%; border-top-color: var(--accent); border-bottom-color: var(--accent-light); animation-duration: 3s; }
+    .atom-spinner .center-icon { font-size: 3.4rem; z-index: 2; text-shadow: 0 4px 12px rgba(8,145,178,0.3); }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .title-main {
+        font-family: var(--font-display);
+        font-weight: 900;
+        font-size: clamp(2.2rem, 5.5vw, 4rem);
+        background: linear-gradient(135deg, var(--primary), var(--secondary), var(--sky), var(--accent));
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientText 6s ease infinite;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    @keyframes gradientText {
+        0%,100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    h2.section-title {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 1.2rem;
+        text-align: center;
+        line-height: 1.25;
+    }
+    .subtitle-main {
+        font-size: 1.3rem;
+        color: var(--text-light);
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+        background: rgba(255,255,255,0.85);
+        padding: 0.5rem 1.8rem;
+        border-radius: var(--radius-full);
+        text-align: center;
+        border: 2px solid #fff;
+    }
+    .basmalah {
+        font-family: var(--font-arabic);
+        font-size: 2.8rem;
+        color: var(--primary);
+        margin-bottom: 1.2rem;
+        text-shadow: 2px 2px 6px rgba(255,255,255,0.8);
+    }
+    .ayat-text {
+        font-family: var(--font-arabic);
+        font-size: 2rem;
+        color: var(--text);
+        line-height: 2.2;
+        background: rgba(255,255,255,0.88);
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        margin: 0.8rem 0;
+        max-width: 900px;
+        text-align: center;
+        border: 2px solid #fff;
+        box-shadow: var(--shadow-lg);
+    }
+    .ayat-arti {
+        font-size: 1.15rem;
+        color: var(--text);
+        font-weight: 700;
+        text-align: center;
+        background: rgba(255,255,255,0.92);
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius);
+        margin: 0.5rem 0;
+        max-width: 850px;
+        border: 2px solid #fff;
+        box-shadow: var(--shadow-sm);
+        line-height: 1.7;
+    }
+
+    .glass-box {
+        background: rgba(255,255,255,0.94);
+        border-radius: var(--radius-xl);
+        padding: 2.2rem;
+        width: 100%;
+        max-width: 1000px;
+        border: 2px solid #fff;
+        box-shadow: var(--shadow-lg);
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+    .glass-box-sm {
+        background: rgba(255,255,255,0.96);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.5rem;
+        border: 2px solid #fff;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 0.8rem;
+    }
+    .materi-box {
+        background: rgba(255,255,255,0.94);
+        border-radius: var(--radius-xl);
+        padding: 2rem 2.2rem;
+        width: 100%;
+        max-width: 1080px;
+        border: 2px solid #fff;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn-reveal {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border: none; color: white;
+        font-weight: 800; font-size: 1rem;
+        padding: 0.6rem 1.6rem;
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(8,145,178,0.3);
+        transition: all 0.3s;
+        font-family: var(--font-display);
+    }
+    .btn-reveal:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 32px rgba(8,145,178,0.4); }
+    .btn-reveal.amber { background: linear-gradient(135deg, var(--accent), #d97706); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
+    .btn-reveal.amber:hover { box-shadow: 0 14px 32px rgba(245,158,11,0.4); }
+    .btn-reveal.rose { background: linear-gradient(135deg, var(--rose), #be123c); box-shadow: 0 8px 24px rgba(225,29,72,0.3); }
+    .btn-reveal.rose:hover { box-shadow: 0 14px 32px rgba(225,29,72,0.4); }
+    .btn-reveal.sky { background: linear-gradient(135deg, var(--sky), #075985); box-shadow: 0 8px 24px rgba(2,132,199,0.3); }
+    .btn-reveal.sky:hover { box-shadow: 0 14px 32px rgba(2,132,199,0.4); }
+    .btn-reveal.violet { background: linear-gradient(135deg, var(--violet), #5b21b6); box-shadow: 0 8px 24px rgba(124,58,237,0.3); }
+    .btn-reveal.violet:hover { box-shadow: 0 14px 32px rgba(124,58,237,0.4); }
+
+    .hidden-answer {
+        background: #ecfeff;
+        padding: 1.2rem 1.5rem;
+        border-radius: var(--radius);
+        border-left: 6px solid var(--primary);
+        margin-top: 1rem;
+        font-weight: 800;
+        font-size: 1.05rem;
+        display: none;
+        color: #155e75;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+        line-height: 1.7;
+    }
+    .hidden-answer.show { display: block; animation: slideUp 0.3s ease; }
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dash-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+        gap: 1.3rem;
+        width: 100%;
+        max-width: 1050px;
+    }
+    .dash-card {
+        background: rgba(255,255,255,0.96);
+        border-radius: var(--radius-lg);
+        padding: 1.8rem 1rem;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        border: 2px solid #fff;
+        transition: all 0.3s;
+        cursor: pointer;
+        display: flex; flex-direction: column;
+        align-items: center; gap: 0.7rem;
+    }
+    .dash-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow-lg);
+    }
+    .dash-icon { font-size: 3rem; }
+    .dash-title {
+        font-weight: 900; font-size: 1rem;
+        font-family: var(--font-display);
+        color: var(--text);
+        line-height: 1.3;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; width: 100%; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; width: 100%; }
+    @media (max-width:800px) {
+        .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        .dash-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width:500px) {
+        .dash-grid { grid-template-columns: 1fr; }
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 0.4rem 1.1rem;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        margin-right: 0.4rem;
+        color: #fff;
+    }
+
+    .eq-display {
+        background: #ecfeff;
+        border-radius: 14px;
+        padding: 0.8rem 1.2rem;
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-align: center;
+        border: 2px solid #a5f3fc;
+        margin: 0.4rem 0;
+        color: var(--text);
+    }
+    .eq-display.positive { border-color: var(--rose); background: #fff1f2; }
+    .eq-display.negative { border-color: var(--primary); background: #ecfeff; }
+    .eq-display.highlight { border-color: var(--accent); background: #fffbeb; }
+
+    .example-box {
+        background: #ecfeff;
+        border-radius: 10px;
+        padding: 0.2rem 0.9rem;
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        color: var(--primary-dark);
+        display: inline-block;
+        margin: 0.15rem 0;
+        border: 1px solid #a5f3fc;
+    }
+
+    /* Trend table */
+    .trend-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        font-size: 0.95rem;
+    }
+    .trend-table th {
+        background: linear-gradient(135deg, var(--primary), var(--sky));
+        color: #fff;
+        padding: 0.8rem 0.6rem;
+        font-weight: 800;
+        text-align: center;
+        font-size: 0.95rem;
+    }
+    .trend-table td {
+        padding: 0.75rem 0.6rem;
+        text-align: center;
+        font-weight: 700;
+        color: var(--text);
+        border-bottom: 1px solid #e0f2fe;
+    }
+    .trend-table tr:last-child td { border-bottom: none; }
+    .trend-table tr:nth-child(even) td { background: #f0f9ff; }
+    .trend-table .up { color: var(--secondary); font-weight: 900; }
+    .trend-table .down { color: var(--rose); font-weight: 900; }
+
+    /* Position of PT */
+    .pt-mini {
+        display: grid;
+        grid-template-columns: repeat(18, 1fr);
+        gap: 2px;
+        width: 100%;
+        max-width: 780px;
+        margin: 0.8rem auto;
+        font-size: 0.65rem;
+        font-weight: 800;
+    }
+    .pt-cell {
+        aspect-ratio: 1;
+        background: #e0f2fe;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text);
+    }
+    .pt-cell.metal { background: linear-gradient(135deg, #fcd34d, #f59e0b); color: #78350f; }
+    .pt-cell.nonmetal { background: linear-gradient(135deg, #6ee7b7, #059669); color: #fff; }
+    .pt-cell.metalloid { background: linear-gradient(135deg, #c084fc, #7c3aed); color: #fff; }
+    .pt-cell.noble { background: linear-gradient(135deg, #67e8f9, #0891b2); color: #fff; }
+    .pt-cell.blank { background: transparent; }
+
+    /* Step-by-step visual */
+    .step-flow {
+        display: flex; flex-direction: column;
+        gap: 0.9rem;
+        margin: 1rem 0;
+    }
+    .step-item {
+        display: flex; gap: 1rem;
+        background: #fff;
+        padding: 1rem 1.2rem;
+        border-radius: 14px;
+        border-left: 6px solid var(--primary);
+        box-shadow: var(--shadow-sm);
+        align-items: flex-start;
+    }
+    .step-num {
+        background: linear-gradient(135deg, var(--primary), var(--sky));
+        color: #fff;
+        min-width: 38px; height: 38px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 900; font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+    .step-item p { font-weight: 700; color: var(--text); font-size: 1rem; line-height: 1.6; }
+    .step-item p strong { color: var(--primary-dark); }
+
+    /* Fenomena box */
+    .phenom-box {
+        background: linear-gradient(135deg, #fff7ed, #fef3c7);
+        border: 2px dashed var(--accent);
+        border-radius: 18px;
+        padding: 1.4rem;
+        text-align: center;
+        margin-bottom: 1.2rem;
+    }
+    .phenom-box .emoji { font-size: 3.2rem; display: block; margin-bottom: 0.4rem; }
+    .phenom-box p { font-weight: 800; color: #78350f; font-size: 1.05rem; line-height: 1.55; }
+
+    /* Nav */
+    .nav-footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+        border-top: 2px solid rgba(255,255,255,0.8);
+        padding-top: 1.5rem;
+        flex-shrink: 0;
+    }
+    .nav-btn {
+        background: rgba(255,255,255,0.95);
+        border: 2px solid #fff;
+        color: var(--text);
+        padding: 0.7rem 1.8rem;
+        border-radius: var(--radius-full);
+        font-weight: 900;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex; gap: 0.5rem;
+        font-family: var(--font-main);
+        font-size: 1rem;
+        box-shadow: var(--shadow-sm);
+    }
+    .nav-btn:hover {
+        background: #fff;
+        border-color: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+        color: var(--primary);
+    }
+    .nav-btn.dash { border-color: var(--accent); color: #b45309; }
+    .nav-btn.dash:hover { border-color: var(--accent); color: #92400e; }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(8,145,178,0.4); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+    /* Reflection card */
+    .reflect-card {
+        background: #fff;
+        padding: 1.2rem 1.5rem;
+        border-radius: 15px;
+        border-left: 6px solid var(--primary);
+        font-weight: 700;
+        color: var(--text-light);
+        line-height: 1.65;
+    }
+    .reflect-card strong { color: var(--primary-dark); }
+
+    /* Discovery box */
+    .discovery {
+        background: linear-gradient(135deg, #ecfeff, #cffafe);
+        border: 2px solid var(--primary-light);
+        border-radius: 18px;
+        padding: 1.4rem;
+        margin: 1rem 0;
+    }
+    .discovery-title {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        color: var(--primary-dark);
+        margin-bottom: 0.6rem;
+        display: flex; align-items: center; gap: 0.5rem;
+    }
+    .discovery p { font-weight: 700; color: var(--text); line-height: 1.7; font-size: 1rem; }
+
+    .arrow-tag {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary), var(--sky));
+        color: #fff;
+        padding: 0.35rem 0.9rem;
+        border-radius: 10px;
+        font-weight: 900;
+        font-size: 0.9rem;
+        margin: 0 0.3rem;
+    }
+    .arrow-tag.big { font-size: 1.2rem; padding: 0.4rem 1.1rem; }
+</style>
+</head>
+<body>
+
+<div class="floating-shapes">
+    <div class="shape"></div><div class="shape"></div><div class="shape"></div>
+    <div class="shape"></div><div class="shape"></div>
+</div>
+
+<div class="app-container">
+
+    <!-- ============ SLIDE 1: COVER ============ -->
+    <div id="slide1" class="slide-content active">
+        <div class="basmalah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+        <div class="atom-spinner">
+            <div class="orbit"></div><div class="orbit"></div><div class="orbit"></div>
+            <div class="center-icon">🌊</div>
+        </div>
+        <p style="font-weight:900; color:var(--primary); font-size:1.3rem; letter-spacing:4px;">KIMIA • KELAS X SMA</p>
+        <h1 class="title-main">SIFAT KEPERIODIKAN UNSUR</h1>
+        <p class="subtitle-main">"Menelusuri Keteraturan Sifat Unsur dalam Tabel Periodik"</p>
+        <div class="glass-box" style="margin-top:1.3rem; text-align:center; max-width:820px; padding:1.5rem;">
+            <p style="font-family:var(--font-display); font-size:1.35rem; color:var(--primary); line-height:1.45;">
+                "Unsur-unsur bukan sekadar kumpulan simbol —<br>mereka tersusun dalam harmoni yang indah,<br>menyimpan pola tersembunyi yang menunggu untuk ditemukan."
+            </p>
+        </div>
+        <div style="margin-top:1.3rem; background:rgba(255,255,255,0.95); padding:1rem 2rem; border-radius:var(--radius-full); box-shadow:var(--shadow-sm); border:2px solid #fff;">
+            <p style="font-weight:900; color:var(--text); font-size:1.2rem; text-align:center; margin:0;">
+                👩‍🏫 <span style="color:var(--primary);">Dhevira Aptia, S.Pd.</span>
+            </p>
+            <p style="font-weight:800; color:var(--text-light); font-size:0.98rem; text-align:center; margin:0.15rem 0 0;">Guru Kimia</p>
+        </div>
+    </div>
+
+    <!-- ============ SLIDE 2: TUJUAN ============ -->
+    <div id="slide2" class="slide-content">
+        <h2 class="section-title">🎯 Tujuan Pembelajaran</h2>
+        <div class="glass-box" style="max-width:980px;">
+            <p style="font-weight:900; color:var(--text-light); margin-bottom:1.3rem; font-size:1.2rem; text-align:center;">Setelah pembelajaran ini, peserta didik mampu:</p>
+            <div style="display:flex; flex-direction:column; gap:0.9rem; font-size:1.05rem; font-weight:700;">
+                <div class="glass-box-sm" style="border-left:8px solid var(--accent); margin-bottom:0;">✅ <strong>Menjelaskan</strong> pengertian <em>jari-jari atom</em> dan menganalisis tren-nya dalam golongan &amp; periode.</div>
+                <div class="glass-box-sm" style="border-left:8px solid var(--primary); margin-bottom:0;">✅ <strong>Mendefinisikan</strong> <em>energi ionisasi</em> serta menganalisis kecenderungannya dalam tabel periodik.</div>
+                <div class="glass-box-sm" style="border-left:8px solid var(--secondary); margin-bottom:0;">✅ <strong>Menjelaskan</strong> <em>afinitas elektron</em> dan faktor yang mempengaruhinya.</div>
+                <div class="glass-box-sm" style="border-left:8px solid var(--rose); margin-bottom:0;">✅ <strong>Menganalisis</strong> tren <em>keelektronegatifan</em> dan kaitannya dengan jenis ikatan.</div>
+                <div class="glass-box-sm" style="border-left:8px solid var(--violet); margin-bottom:0;">✅ <strong>Membedakan</strong> sifat <em>logam, nonlogam, dan metaloid</em> berdasarkan posisinya di tabel periodik.</div>
+                <div class="glass-box-sm" style="border-left:8px solid var(--sky); margin-bottom:0;">✅ <strong>Menyimpulkan</strong> keteraturan sifat unsur dan mengaitkannya dengan konsep <em>konfigurasi elektron</em>.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ SLIDE 3: AYAT ============ -->
+    <div id="slide3" class="slide-content">
+        <h2 class="section-title">📖 Integrasi Spiritual</h2>
+        <div class="ayat-text">
+            وَكُلَّ شَيْءٍ أَحْصَيْنَاهُ فِي إِمَامٍ مُّبِينٍ
+        </div>
+        <div class="ayat-arti">"Dan segala sesuatu Kami catat dalam kitab yang nyata (Lauh Mahfuzh)."<br><span style="color:var(--primary);">(QS. Yasin: 12)</span></div>
+        <div class="glass-box" style="border-left:8px solid var(--primary); max-width:920px; margin-top:1rem;">
+            <p style="font-size:1.3rem; font-weight:900; color:var(--primary);">💡 Refleksi:</p>
+            <p style="font-size:1.05rem; font-weight:700; margin-top:0.5rem; line-height:1.75;">
+                Allah menciptakan alam semesta dengan <strong>keteraturan yang sempurna</strong>. Tidak ada satu atom pun yang tercipta secara acak. Dalam tabel periodik unsur, kita menyaksikan salah satu wujud keteraturan itu — sifat-sifat unsur yang berubah secara <strong>terpola dan dapat diprediksi</strong>. Mempelajari keperiodikan unsur berarti membaca salah satu "kitab" yang Allah tuliskan dalam bahasa sains.
+            </p>
+            <p style="font-size:1.5rem; font-weight:900; text-align:center; color:var(--accent); margin:1rem 0;">
+                🌊 Keteraturan adalah bukti Kekuasaan-Nya
+            </p>
+        </div>
+    </div>
+
+    <!-- ============ SLIDE 4: DASHBOARD ============ -->
+    <div id="slide4" class="slide-content">
+        <h2 class="section-title" style="font-size:2.7rem; margin-bottom:0;">🗺️ PETA PETUALANGAN</h2>
+        <p style="font-weight:900; color:var(--text-light); margin-bottom:1.5rem; font-size:1.25rem; text-align:center;">Pilih gerbang eksplorasimu hari ini:</p>
+        <div class="dash-grid" style="max-width:1100px;">
+            <div class="dash-card" style="border-color:var(--accent);" onclick="goToSlide(5)">
+                <div class="dash-icon">🔵</div>
+                <div class="dash-title" style="color:#b45309;">GERBANG 1<br>Jari-jari Atom</div>
+            </div>
+            <div class="dash-card" onclick="goToSlide(11)">
+                <div class="dash-icon">⚡</div>
+                <div class="dash-title">GERBANG 2<br>Energi Ionisasi</div>
+            </div>
+            <div class="dash-card" style="border-color:var(--secondary);" onclick="goToSlide(17)">
+                <div class="dash-icon">🧲</div>
+                <div class="dash-title" style="color:var(--secondary);">GERBANG 3<br>Afinitas Elektron</div>
+            </div>
+            <div class="dash-card" onclick="goToSlide(23)">
+                <div class="dash-icon">🎣</div>
+                <div class="dash-title">GERBANG 4<br>Keelektronegatifan</div>
+            </div>
+            <div class="dash-card" style="border-color:var(--violet);" onclick="goToSlide(29)">
+                <div class="dash-icon" style="color:var(--violet);">🔩</div>
+                <div class="dash-title" style="color:var(--violet);">GERBANG 5<br>Logam &amp; Nonlogam</div>
+            </div>
+            <div class="dash-card" style="border-color:var(--rose);" onclick="goToSlide(35)">
+                <div class="dash-icon">🏆</div>
+                <div class="dash-title" style="color:var(--rose);">GERBANG 6<br>Kesimpulan &amp; Refleksi</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         GERBANG 1 — JARI-JARI ATOM (Slide 5–10)
+    ========================================================== -->
+
+    <div id="slide5" class="slide-content">
+        <h2 class="section-title" style="color:var(--accent);">🔵 GERBANG 1 — JARI-JARI ATOM</h2>
+        <div class="dash-grid" style="max-width:1050px;">
+            <div class="dash-card" onclick="goToSlide(6)"><div class="dash-icon">💬</div><div class="dash-title">1. Diskusi Pemantik</div></div>
+            <div class="dash-card" onclick="goToSlide(7)"><div class="dash-icon">🔍</div><div class="dash-title">2. Penemuan Terbimbing</div></div>
+            <div class="dash-card" onclick="goToSlide(8)"><div class="dash-icon">📖</div><div class="dash-title">3. Materi Detail</div></div>
+            <div class="dash-card" onclick="goToSlide(9)"><div class="dash-icon">🤝</div><div class="dash-title">4. Latihan Bersama</div></div>
+            <div class="dash-card" style="border-color:var(--rose);" onclick="goToSlide(10)"><div class="dash-icon" style="color:var(--rose);">📝</div><div class="dash-title" style="color:var(--rose);">5. Kesimpulan &amp; Latihan Mandiri</div></div>
+        </div>
+    </div>
+
+    <div id="slide6" class="slide-content">
+        <h2 class="section-title">💬 DISKUSI PEMANTIK</h2>
+        <div class="glass-box" style="max-width:980px;">
+            <div class="phenom-box">
+                <span class="emoji">🎈</span>
+                <p>Bayangkan dua balon: balon A baru ditiup sedikit, balon B ditiup sangat besar. Balon manakah yang lebih besar? Tentu balon B. Pertanyaannya: <em>apa yang membuat balon bisa membesar?</em></p>
+            </div>
+            <p style="font-weight:900; font-size:1.15rem; color:var(--primary); margin-bottom:0.8rem;">👥 Diskusikan bersama kelompokmu (7 menit):</p>
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#ecfeff; padding:1.1rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q1: Menurutmu, jika balon adalah "atom", apa yang membuat atom "membesar"? Coba tebak!</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g1d1')">💡 PETUNJUK</button>
+                    <div id="g1d1" class="hidden-answer" style="font-size:1rem;">Balon membesar karena isinya bertambah. Begitu pula atom — jika <strong>jumlah kulit elektronnya bertambah</strong>, maka "ukuran" atom juga membesar.</div>
+                </div>
+                <div style="background:#fff7ed; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q2: Kalau kamu melihat tabel periodik, unsur-unsur dalam satu golongan dari atas ke bawah semakin "berat". Apakah itu berarti ukurannya juga bertambah? Kenapa?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g1d2')">💡 PETUNJUK</button>
+                    <div id="g1d2" class="hidden-answer" style="font-size:1rem;">Ya! Karena bertambahnya nomor atom diikuti dengan <strong>penambahan kulit elektron</strong>. Kulit baru membuat atom "melebar" — persis seperti balon yang ditiup.</div>
+                </div>
+                <div style="background:#f0fdf4; padding:1.1rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q3: Jika dalam satu periode (kiri → kanan) jumlah kulitnya <em>sama</em>, menurutmu ukuran atomnya mengecil atau membesar? Jelaskan nalarmu!</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g1d3')">💡 PETUNJUK</button>
+                    <div id="g1d3" class="hidden-answer" style="font-size:1rem;">Menjadi <strong>kecil</strong>. Meskipun kulitnya sama, jumlah proton bertambah, sehingga tarikan inti ke elektron makin kuat dan atom "mengerut".</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide7" class="slide-content">
+        <h2 class="section-title">🔍 PENEMUAN TERBIMBING</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:1rem;">Ayo amati data berikut dan temukan polanya!</p>
+
+            <div class="step-flow">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <p><strong>Amati atom-atom dalam golongan IA (logam alkali):</strong><br>
+                    <span class="example-box">₃Li = 2 . 1</span> <span class="example-box">₁₁Na = 2 . 8 . 1</span> <span class="example-box">₁₉K = 2 . 8 . 8 . 1</span><br>
+                    Ketiga unsur memiliki <strong>elektron valensi 1</strong>, tapi jumlah kulitnya berbeda: 2, 3, dan 4 kulit.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <p><strong>Bayangkan ukuran atomnya:</strong><br>
+                    Li (2 kulit) → Na (3 kulit) → K (4 kulit). Semakin banyak kulit, semakin "jauh" elektron terluar dari inti. Kalau ada kulit tambahan, otomatis "radius" atom bertambah.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <p><strong>Sekarang bandingkan atom dalam periode yang sama (misal periode 3):</strong><br>
+                    <span class="example-box">₁₁Na (11p)</span> <span class="example-box">₁₃Al (13p)</span> <span class="example-box">₁₇Cl (17p)</span><br>
+                    Semua punya 3 kulit. Tapi jumlah proton berbeda: 11, 13, 17. Proton bertambah → tarikan inti bertambah → elektron terluar lebih "ketat" dipegang → atom mengecil.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <p><strong>Kesimpulan sementara:</strong><br>
+                    📏 <strong>Dalam satu golongan (↓):</strong> jari-jari <em>bertambah besar</em> karena kulit bertambah.<br>
+                    📏 <strong>Dalam satu periode (→):</strong> jari-jari <em>berkurang</em> karena tarikan inti lebih kuat.</p>
+                </div>
+            </div>
+
+            <div style="background:#fffbeb; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent); margin-top:1rem;">
+                <p style="font-weight:800;">🧠 <strong>Pertanyaan kritis:</strong> Jika jari-jari atom mengecil dari kiri ke kanan, apa yang terjadi pada "kerapatan" atom di sisi kanan tabel periodik? Mengapa halogen (F, Cl) cenderung "rakus" elektron?</p>
+                <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.6rem;" onclick="revealAnswer('g1k')">Jawab</button>
+                <div id="g1k" class="hidden-answer">Karena jari-jarinya kecil, inti atom di sisi kanan <strong>sangat kuat menarik elektron</strong>. Itulah sebabnya nonlogam (F, Cl, O) sangat mudah menangkap elektron dari atom lain.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide8" class="slide-content">
+        <h2 class="section-title">📖 MATERI — JARI-JARI ATOM</h2>
+        <div class="materi-box" style="border-top:8px solid var(--primary);">
+            <div style="background:#ecfeff; padding:1.4rem; border-radius:16px; border-left:8px solid var(--primary);">
+                <p style="font-weight:900; font-size:1.2rem; color:var(--primary);">Definisi</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:1.05rem; line-height:1.7; margin-top:0.5rem;">
+                    <strong>Jari-jari atom</strong> adalah <strong>jarak dari inti atom sampai kulit elektron terluar</strong>. Karena posisi elektron tidak tetap (mengikuti prinsip ketidakpastian), jari-jari atom biasanya dinyatakan sebagai <em>jarak rata-rata</em> dari hasil pengukuran difraksi sinar-X atau perhitungan mekanika kuantum.
+                </p>
+            </div>
+
+            <h3 style="font-family:var(--font-display); font-size:1.3rem; color:var(--primary-dark); margin:1.4rem 0 0.8rem;">📊 Data Jari-jari Atom (dalam Å, 1 Å = 10⁻¹⁰ m)</h3>
+            <table class="trend-table">
+                <tr><th>Gol./Periode</th><th>IA</th><th>IIA</th><th>IIIA</th><th>IVA</th><th>VA</th><th>VIA</th><th>VIIA</th><th>VIIIA</th></tr>
+                <tr><td><strong>1</strong></td><td>H 0,37</td><td></td><td></td><td></td><td></td><td></td><td></td><td>He 0,31</td></tr>
+                <tr><td><strong>2</strong></td><td>Li 1,52</td><td>Be 1,12</td><td>B 0,85</td><td>C 0,77</td><td>N 0,75</td><td>O 0,73</td><td>F 0,72</td><td>Ne 0,71</td></tr>
+                <tr><td><strong>3</strong></td><td>Na 1,86</td><td>Mg 1,60</td><td>Al 1,43</td><td>Si 1,18</td><td>P 1,10</td><td>S 1,03</td><td>Cl 1,00</td><td>Ar 0,98</td></tr>
+                <tr><td><strong>4</strong></td><td>K 2,27</td><td>Ca 1,97</td><td>Ga 1,35</td><td>Ge 1,22</td><td>As 1,20</td><td>Se 1,19</td><td>Br 1,14</td><td>Kr 1,12</td></tr>
+                <tr><td><strong>5</strong></td><td>Rb 2,48</td><td>Sr 2,15</td><td>In 1,67</td><td>Sn 1,40</td><td>Sb 1,40</td><td>Te 1,42</td><td>I 1,33</td><td>Xe 1,31</td></tr>
+            </table>
+
+            <div class="grid-2" style="margin-top:1.2rem;">
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; color:var(--secondary);">⬇️ DALAM SATU GOLONGAN (↑ ke ↓)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        Jari-jari atom <strong style="color:var(--secondary);">semakin BESAR</strong>.<br>
+                        <strong>Alasan:</strong> jumlah kulit elektron bertambah, sehingga elektron terluar makin jauh dari inti.
+                    </p>
+                    <div class="eq-display" style="font-size:1rem;">Li &lt; Na &lt; K &lt; Rb &lt; Cs</div>
+                </div>
+                <div style="background:#fff1f2; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; color:var(--rose);">➡️ DALAM SATU PERIODE (← ke →)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        Jari-jari atom <strong style="color:var(--rose);">semakin KECIL</strong>.<br>
+                        <strong>Alasan:</strong> jumlah proton bertambah → muatan inti efektif bertambah → tarikan inti ke elektron terluar makin kuat.
+                    </p>
+                    <div class="eq-display" style="font-size:1rem;">Na &gt; Mg &gt; Al &gt; Si &gt; P &gt; S &gt; Cl</div>
+                </div>
+            </div>
+
+            <div style="margin-top:1.3rem; background:#f8fafc; padding:1.1rem 1.3rem; border-radius:14px; border:2px solid #a5f3fc;">
+                <p style="font-weight:900; color:var(--primary-dark);">📌 Fakta Penting yang Wajib Diingat:</p>
+                <ul style="font-weight:700; color:var(--text-light); font-size:1rem; margin-left:1.2rem; line-height:1.9;">
+                    <li><strong>Kation</strong> (ion positif) selalu lebih kecil dari atom netralnya. Contoh: <span class="example-box">Na⁺ &lt; Na</span></li>
+                    <li><strong>Anion</strong> (ion negatif) selalu lebih besar dari atom netralnya. Contoh: <span class="example-box">Cl⁻ &gt; Cl</span></li>
+                    <li>Untuk ion isoelektronik (jumlah elektron sama), makin besar muatan inti, makin kecil jari-jari. Contoh: <span class="example-box">O²⁻ &gt; F⁻ &gt; Ne &gt; Na⁺ &gt; Mg²⁺</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide9" class="slide-content">
+        <h2 class="section-title">🤝 LATIHAN BERSAMA</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:1rem;">Kerjakan bersama teman sebangkumu, lalu klik untuk melihat jawaban!</p>
+
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div style="background:#ecfeff; padding:1.2rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 1: Urutkan jari-jari atom dari yang paling kecil ke paling besar:<br>Li (3), Be (4), B (5), C (6)</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lb1')">JAWABAN</button>
+                    <div id="lb1" class="hidden-answer">
+                        Karena mereka berada di <strong>periode yang sama</strong> (periode 2), jari-jari berkurang dari kiri ke kanan.<br>
+                        Jadi: <strong>C &lt; B &lt; Be &lt; Li</strong> (paling kecil C, paling besar Li).
+                    </div>
+                </div>
+
+                <div style="background:#fff7ed; padding:1.2rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 2: Mana yang lebih besar jari-jarinya: Na atau Na⁺? Jelaskan!</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lb2')">JAWABAN</button>
+                    <div id="lb2" class="hidden-answer">
+                        <strong>Na &gt; Na⁺</strong>. Ketika Na melepas 1 elektron untuk menjadi Na⁺, jumlah kulitnya berkurang dari 3 menjadi 2. Selain itu, jumlah proton tetap (11) sedangkan elektron berkurang, sehingga tarikan inti lebih kuat → jari-jari mengecil.
+                    </div>
+                </div>
+
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 3: Diketahui unsur ₃Li, ₄Be, ₅B, ₉F. Tentukan unsur dengan jari-jari atom <strong>terbesar</strong>!</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lb3')">JAWABAN</button>
+                    <div id="lb3" class="hidden-answer">
+                        Keempat unsur berada di periode 2. Dalam satu periode, jari-jari mengecil dari kiri ke kanan.<br>
+                        Urutan: <strong>Li (3) &gt; Be (4) &gt; B (5) &gt; F (9)</strong>. Jadi yang terbesar adalah <strong>Li</strong>.
+                    </div>
+                </div>
+
+                <div style="background:#fdf2f8; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 4: Mengapa K (kalium) memiliki jari-jari lebih besar daripada Na (natrium), padahal keduanya berada di golongan yang sama?</p>
+                    <button class="btn-reveal rose" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lb4')">JAWABAN</button>
+                    <div id="lb4" class="hidden-answer">
+                        Karena K berada di bawah Na dalam golongan IA. K memiliki <strong>4 kulit elektron</strong> (2, 8, 8, 1), sedangkan Na hanya <strong>3 kulit</strong> (2, 8, 1). Kulit tambahan membuat elektron terluar lebih jauh dari inti → jari-jari lebih besar.
+                    </div>
+                </div>
+
+                <div style="background:#fffbeb; padding:1.2rem; border-radius:14px; border-left:6px solid var(--amber);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 5: Ion O²⁻, F⁻, Na⁺, dan Mg²⁺ adalah isoelektronik (jumlah elektron sama, yaitu 10). Urutkan jari-jari dari yang terbesar!</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lb5')">JAWABAN</button>
+                    <div id="lb5" class="hidden-answer">
+                        Untuk ion isoelektronik, <strong>makin besar muatan inti (proton), makin kecil jari-jari</strong>.<br>
+                        Proton: O (8) &lt; F (9) &lt; Na (11) &lt; Mg (12).<br>
+                        Jadi urutannya: <strong>O²⁻ &gt; F⁻ &gt; Na⁺ &gt; Mg²⁺</strong>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide10" class="slide-content">
+        <h2 class="section-title" style="color:var(--rose);">📝 KESIMPULAN &amp; LATIHAN MANDIRI</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose); max-width:1000px;">
+            <div style="background:#fff1f2; padding:1.3rem; border-radius:16px; border-left:8px solid var(--rose);">
+                <p style="font-weight:900; font-size:1.15rem; color:var(--rose);">🔖 Kesimpulan Gerbang 1</p>
+                <ul style="font-weight:700; color:var(--text); font-size:1rem; margin-left:1.2rem; line-height:1.9; margin-top:0.5rem;">
+                    <li>Jari-jari atom = jarak inti ke elektron terluar.</li>
+                    <li><strong>Golongan (↓):</strong> bertambah besar karena kulit elektron bertambah.</li>
+                    <li><strong>Periode (→):</strong> berkurang karena tarikan inti terhadap elektron makin kuat.</li>
+                    <li>Kation lebih kecil, anion lebih besar dari atom netralnya.</li>
+                </ul>
+            </div>
+
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin:1.3rem 0 0.8rem;">✏️ Latihan Mandiri (kerjakan di buku tulis):</p>
+
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">1. Apa yang dimaksud dengan jari-jari atom?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm1')">LIHAT KUNCI</button>
+                    <div id="lm1" class="hidden-answer">Jarak dari inti atom sampai kulit elektron terluar suatu atom.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">2. Dalam satu periode dari kiri ke kanan, jari-jari atom semakin ______. Sebutkan alasannya!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm2')">LIHAT KUNCI</button>
+                    <div id="lm2" class="hidden-answer">Semakin <strong>kecil</strong>. Karena jumlah proton bertambah, tarikan inti terhadap elektron terluar makin kuat, sehingga elektron tertarik lebih dekat ke inti.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">3. Urutkan dari jari-jari terkecil: Na (11), Mg (12), K (19), Ca (20), Rb (37)</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm3')">LIHAT KUNCI</button>
+                    <div id="lm3" class="hidden-answer">
+                        Mg &lt; Na &lt; Ca &lt; K &lt; Rb.<br>
+                        Penjelasan: Mg dan Na di periode 3 (Mg lebih kecil). K dan Ca di periode 4 (Ca lebih kecil). Rb di periode 5 paling besar.
+                    </div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">4. Mana yang lebih besar: atom Cl atau ion Cl⁻? Mengapa?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm4')">LIHAT KUNCI</button>
+                    <div id="lm4" class="hidden-answer"><strong>Cl⁻ lebih besar</strong>, karena menerima 1 elektron tambahan sehingga tolakan antar elektron bertambah, sementara jumlah proton tetap.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">5. Unsur X memiliki konfigurasi 2, 8, 3 dan unsur Y memiliki konfigurasi 2, 8, 7. Keduanya berada di periode yang sama. Mana yang jari-jarinya lebih besar?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm5')">LIHAT KUNCI</button>
+                    <div id="lm5" class="hidden-answer">X (Al, golongan IIIA) lebih besar dari Y (Cl, golongan VIIA) karena X berada lebih kiri dalam periode yang sama.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         GERBANG 2 — ENERGI IONISASI (Slide 11–16)
+    ========================================================== -->
+
+    <div id="slide11" class="slide-content">
+        <h2 class="section-title">⚡ GERBANG 2 — ENERGI IONISASI</h2>
+        <div class="dash-grid" style="max-width:1050px;">
+            <div class="dash-card" onclick="goToSlide(12)"><div class="dash-icon">💬</div><div class="dash-title">1. Diskusi Pemantik</div></div>
+            <div class="dash-card" onclick="goToSlide(13)"><div class="dash-icon">🔍</div><div class="dash-title">2. Penemuan Terbimbing</div></div>
+            <div class="dash-card" onclick="goToSlide(14)"><div class="dash-icon">📖</div><div class="dash-title">3. Materi Detail</div></div>
+            <div class="dash-card" onclick="goToSlide(15)"><div class="dash-icon">🤝</div><div class="dash-title">4. Latihan Bersama</div></div>
+            <div class="dash-card" style="border-color:var(--rose);" onclick="goToSlide(16)"><div class="dash-icon" style="color:var(--rose);">📝</div><div class="dash-title" style="color:var(--rose);">5. Kesimpulan &amp; Latihan Mandiri</div></div>
+        </div>
+    </div>
+
+    <div id="slide12" class="slide-content">
+        <h2 class="section-title">💬 DISKUSI PEMANTIK</h2>
+        <div class="glass-box" style="max-width:980px;">
+            <div class="phenom-box">
+                <span class="emoji">🔋</span>
+                <p>Bayangkan dua orang sedang menggenggam uang. Orang A memegang uang dengan sangat erat (tangannya besar dan kuat). Orang B memegang uang dengan longgar (tangannya kecil dan lemah). Manakah yang lebih mudah "kehilangan" uangnya?</p>
+            </div>
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">👥 Diskusikan bersama kelompokmu (7 menit):</p>
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#ecfeff; padding:1.1rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q1: Jika "uang" diibaratkan elektron, dan "tangan" adalah inti atom — apa yang harus dilakukan inti untuk mempertahankan elektronnya?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g2d1')">💡 PETUNJUK</button>
+                    <div id="g2d1" class="hidden-answer">Inti harus <strong>menarik elektron dengan kuat</strong>. Semakin kuat tarikan inti, semakin sulit elektron dilepaskan — artinya dibutuhkan energi lebih besar.</div>
+                </div>
+                <div style="background:#fff7ed; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q2: Atom Na memiliki 1 elektron valensi, atom Cl memiliki 7 elektron valensi. Menurutmu, mana yang lebih "mudah" melepas elektron? Mengapa?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g2d2')">💡 PETUNJUK</button>
+                    <div id="g2d2" class="hidden-answer">Na lebih mudah melepas elektron. Karena hanya butuh "melepas 1" untuk stabil (oktet), sedangkan Cl harus "menerima 1" — sifatnya berlawanan.</div>
+                </div>
+                <div style="background:#f0fdf4; padding:1.1rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q3: Menurutmu, unsur logam atau nonlogam yang lebih mudah melepas elektron? Di sisi mana mereka berada di tabel periodik?</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g2d3')">💡 PETUNJUK</button>
+                    <div id="g2d3" class="hidden-answer"><strong>Logam</strong> (sisi kiri tabel periodik) lebih mudah melepas elektron. Semakin ke kiri, semakin mudah melepas elektron.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide13" class="slide-content">
+        <h2 class="section-title">🔍 PENEMUAN TERBIMBING</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:1rem;">Amati data energi ionisasi berikut dan temukan polanya!</p>
+
+            <table class="trend-table">
+                <tr><th>Unsur</th><th>Konfigurasi</th><th>EI₁ (kJ/mol)</th></tr>
+                <tr><td>Li</td><td>2 . 1</td><td>520</td></tr>
+                <tr><td>Na</td><td>2 . 8 . 1</td><td>496</td></tr>
+                <tr><td>K</td><td>2 . 8 . 8 . 1</td><td>419</td></tr>
+                <tr><td>Rb</td><td>2 . 8 . 18 . 8 . 1</td><td>403</td></tr>
+                <tr><td>Cs</td><td>2 . 8 . 18 . 18 . 8 . 1</td><td>376</td></tr>
+            </table>
+
+            <div class="step-flow" style="margin-top:1.2rem;">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <p>Semua unsur di atas adalah golongan IA, memiliki 1 elektron valensi. <strong>Perhatikan tren EI-nya:</strong> dari Li (520) ke Cs (376) — nilainya <strong>semakin kecil</strong>.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <p>Karena jari-jari atom dari atas ke bawah bertambah besar, elektron terluar makin <strong>jauh dari inti</strong>. Tarikan inti makin lemah → elektron mudah lepas → EI kecil.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <p><strong>Sekarang bandingkan satu periode:</strong> Na (496) → Mg (738) → Al (578) → Si (789) → P (1012) → S (1000) → Cl (1251) → Ar (1521). Secara umum, EI <strong>naik</strong> dari kiri ke kanan.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <p>Perhatikan pengecualian kecil: Mg (738) &gt; Al (578) dan P (1012) &gt; S (1000). Pengecualian ini terjadi karena konfigurasi elektron yang <strong>lebih stabil</strong> (setengah penuh / penuh).</p>
+                </div>
+            </div>
+
+            <div style="background:#fffbeb; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent); margin-top:1rem;">
+                <p style="font-weight:800;">🧠 <strong>Pertanyaan kritis:</strong> Gas mulia (He, Ne, Ar) memiliki EI paling tinggi di periodenya. Mengapa? Kaitkan dengan kestabilan konfigurasi elektronnya!</p>
+                <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.6rem;" onclick="revealAnswer('g2k')">Jawab</button>
+                <div id="g2k" class="hidden-answer">Karena gas mulia memiliki <strong>konfigurasi elektron penuh (oktet)</strong> yang sangat stabil. Elektronnya terikat sangat kuat, sehingga butuh energi besar untuk melepasnya.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide14" class="slide-content">
+        <h2 class="section-title">📖 MATERI — ENERGI IONISASI</h2>
+        <div class="materi-box" style="border-top:8px solid var(--accent);">
+            <div style="background:#fff7ed; padding:1.4rem; border-radius:16px; border-left:8px solid var(--accent);">
+                <p style="font-weight:900; font-size:1.2rem; color:#b45309;">Definisi</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:1.05rem; line-height:1.7; margin-top:0.5rem;">
+                    <strong>Energi ionisasi (EI)</strong> adalah <strong>energi minimal yang diperlukan untuk melepaskan satu elektron terluar dari atom netral dalam fase gas</strong>. Energi ionisasi biasanya dinyatakan dalam <strong>kJ/mol</strong>.
+                </p>
+                <div class="eq-display highlight" style="font-size:1.1rem; margin-top:0.8rem;">
+                    X(g) + EI → X⁺(g) + e⁻
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top:1.3rem;">
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; color:var(--secondary);">⬇️ DALAM SATU GOLONGAN (↑ ke ↓)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        EI <strong style="color:var(--secondary);">semakin KECIL</strong>.<br>
+                        <strong>Alasan:</strong> jari-jari atom bertambah besar → elektron terluar makin jauh dari inti → tarikan inti lemah → elektron mudah lepas.
+                    </p>
+                    <div class="eq-display" style="font-size:0.95rem;">Li &gt; Na &gt; K &gt; Rb &gt; Cs</div>
+                </div>
+                <div style="background:#fff1f2; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; color:var(--rose);">➡️ DALAM SATU PERIODE (← ke →)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        EI <strong style="color:var(--rose);">semakin BESAR</strong>.<br>
+                        <strong>Alasan:</strong> jari-jari makin kecil → inti makin kuat menarik elektron → elektron sulit lepas → butuh energi besar.
+                    </p>
+                    <div class="eq-display" style="font-size:0.95rem;">Na &lt; Mg &lt; Al &lt; Si &lt; P &lt; S &lt; Cl &lt; Ar</div>
+                </div>
+            </div>
+
+            <div style="margin-top:1.3rem; background:#f8fafc; padding:1.1rem 1.3rem; border-radius:14px; border:2px solid #a5f3fc;">
+                <p style="font-weight:900; color:var(--primary-dark);">📌 Istilah Penting dalam Energi Ionisasi:</p>
+                <ul style="font-weight:700; color:var(--text-light); font-size:1rem; margin-left:1.2rem; line-height:1.9;">
+                    <li><strong>EI₁ (pertama):</strong> energi untuk melepas elektron ke-1.</li>
+                    <li><strong>EI₂ (kedua):</strong> energi untuk melepas elektron ke-2 (selalu lebih besar dari EI₁).</li>
+                    <li>Selalu berlaku: <strong>EI₁ &lt; EI₂ &lt; EI₃ &lt; ...</strong> karena melepas elektron dari ion positif semakin sulit.</li>
+                </ul>
+            </div>
+
+            <div style="margin-top:1.2rem; background:#fffbeb; padding:1.1rem 1.3rem; border-radius:14px; border-left:6px solid var(--amber);">
+                <p style="font-weight:900; color:#b45309;">⚠️ Pengecualian Penting:</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                    EI tidak selalu naik mulus. Contoh: <span class="example-box">Be &gt; B</span>, <span class="example-box">N &gt; O</span>, <span class="example-box">Mg &gt; Al</span>, <span class="example-box">P &gt; S</span>. Ini terjadi karena konfigurasi elektron setengah penuh (ns² np³) atau penuh (ns²) lebih stabil, sehingga elektron pada orbital berikutnya justru lebih mudah dilepas.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide15" class="slide-content">
+        <h2 class="section-title">🤝 LATIHAN BERSAMA</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:1rem;">Diskusikan bersama temanmu, lalu cek jawabannya!</p>
+
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div style="background:#ecfeff; padding:1.2rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 1: Unsur mana yang memiliki EI lebih besar: Na atau Cl? Mengapa?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg2a')">JAWABAN</button>
+                    <div id="lbg2a" class="hidden-answer">
+                        <strong>Cl lebih besar</strong>. Cl berada lebih kanan dalam periode 3, jari-jarinya lebih kecil, dan tarikan inti terhadap elektron lebih kuat → lebih sulit melepas elektron.
+                    </div>
+                </div>
+
+                <div style="background:#fff7ed; padding:1.2rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 2: Urutkan EI dari yang terkecil: K, Na, Li, Rb</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg2b')">JAWABAN</button>
+                    <div id="lbg2b" class="hidden-answer">
+                        Semuanya golongan IA. EI menurun dari atas ke bawah.<br>
+                        Jadi: <strong>Rb &lt; K &lt; Na &lt; Li</strong>.
+                    </div>
+                </div>
+
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 3: Mengapa energi ionisasi kedua (EI₂) selalu lebih besar daripada energi ionisasi pertama (EI₁)?</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg2c')">JAWABAN</button>
+                    <div id="lbg2c" class="hidden-answer">
+                        Karena setelah melepas elektron pertama, atom menjadi ion positif (X⁺). Tarikan inti terhadap elektron yang tersisa <strong>lebih kuat</strong>, sehingga elektron kedua lebih sulit dilepaskan → butuh energi lebih besar.
+                    </div>
+                </div>
+
+                <div style="background:#fdf2f8; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 4: Gas mulia memiliki EI tertinggi dalam periodenya. Jelaskan alasannya!</p>
+                    <button class="btn-reveal rose" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg2d')">JAWABAN</button>
+                    <div id="lbg2d" class="hidden-answer">
+                        Karena gas mulia memiliki konfigurasi elektron <strong>penuh (oktet)</strong> — sangat stabil. Elektronnya terikat sangat kuat oleh inti, sehingga memerlukan energi besar untuk melepaskannya.
+                    </div>
+                </div>
+
+                <div style="background:#fffbeb; padding:1.2rem; border-radius:14px; border-left:6px solid var(--amber);">
+                    <p style="font-weight:800; font-size:1.02rem;">📝 Soal 5: Mengapa EI Be (900 kJ/mol) &gt; EI B (801 kJ/mol), padahal keduanya satu periode?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg2e')">JAWABAN</button>
+                    <div id="lbg2e" class="hidden-answer">
+                        Konfigurasi Be = 2s² (<strong>penuh</strong>) → stabil. B = 2s² 2p¹, elektron ke-3 berada di orbital 2p yang lebih tinggi energinya, sehingga <strong>lebih mudah dilepas</strong>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide16" class="slide-content">
+        <h2 class="section-title" style="color:var(--rose);">📝 KESIMPULAN &amp; LATIHAN MANDIRI</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose); max-width:1000px;">
+            <div style="background:#fff1f2; padding:1.3rem; border-radius:16px; border-left:8px solid var(--rose);">
+                <p style="font-weight:900; font-size:1.15rem; color:var(--rose);">🔖 Kesimpulan Gerbang 2</p>
+                <ul style="font-weight:700; color:var(--text); font-size:1rem; margin-left:1.2rem; line-height:1.9; margin-top:0.5rem;">
+                    <li>EI = energi minimal untuk melepas 1 elektron dari atom netral fase gas.</li>
+                    <li><strong>Golongan (↓):</strong> EI menurun karena jari-jari bertambah.</li>
+                    <li><strong>Periode (→):</strong> EI meningkat karena jari-jari mengecil &amp; muatan inti bertambah.</li>
+                    <li>Selalu EI₁ &lt; EI₂ &lt; EI₃ &lt; ...</li>
+                    <li>Ada pengecualian karena konfigurasi elektron stabil.</li>
+                </ul>
+            </div>
+
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin:1.3rem 0 0.8rem;">✏️ Latihan Mandiri:</p>
+
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">1. Jelaskan apa yang dimaksud dengan energi ionisasi!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm2-1')">KUNCI</button>
+                    <div id="lm2-1" class="hidden-answer">Energi minimal yang diperlukan untuk melepaskan satu elektron terluar dari atom netral dalam fase gas.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">2. Dalam satu periode dari kiri ke kanan, energi ionisasi akan ______. Sebutkan alasannya.</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm2-2')">KUNCI</button>
+                    <div id="lm2-2" class="hidden-answer">Semakin <strong>besar</strong>. Karena jari-jari mengecil dan muatan inti bertambah, tarikan inti ke elektron lebih kuat, sehingga elektron sulit dilepas.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">3. Mana yang lebih besar energi ionisasinya: Na atau K? Jelaskan!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm2-3')">KUNCI</button>
+                    <div id="lm2-3" class="hidden-answer"><strong>Na</strong>. Karena Na berada di atas K dalam golongan IA, jari-jarinya lebih kecil, sehingga elektron lebih sulit dilepas.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">4. Suatu unsur X memiliki EI₁ = 496 kJ/mol, EI₂ = 4562 kJ/mol. Termasuk golongan berapa unsur X? Jelaskan!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm2-4')">KUNCI</button>
+                    <div id="lm2-4" class="hidden-answer">Golongan IA. Lonjakan besar antara EI₁ dan EI₂ menunjukkan bahwa unsur tersebut cenderung melepas <strong>1 elektron</strong> untuk mencapai kestabilan (oktet).</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">5. Mengapa energi ionisasi unsur logam alkali (IA) sangat rendah?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm2-5')">KUNCI</button>
+                    <div id="lm2-5" class="hidden-answer">Karena logam alkali memiliki <strong>1 elektron valensi</strong> yang terletak di kulit terluar dengan jari-jari atom besar. Tarikan inti lemah → elektron mudah dilepas.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         GERBANG 3 — AFINITAS ELEKTRON (Slide 17–22)
+    ========================================================== -->
+
+    <div id="slide17" class="slide-content">
+        <h2 class="section-title">🧲 GERBANG 3 — AFINITAS ELEKTRON</h2>
+        <div class="dash-grid" style="max-width:1050px;">
+            <div class="dash-card" onclick="goToSlide(18)"><div class="dash-icon">💬</div><div class="dash-title">1. Diskusi Pemantik</div></div>
+            <div class="dash-card" onclick="goToSlide(19)"><div class="dash-icon">🔍</div><div class="dash-title">2. Penemuan Terbimbing</div></div>
+            <div class="dash-card" onclick="goToSlide(20)"><div class="dash-icon">📖</div><div class="dash-title">3. Materi Detail</div></div>
+            <div class="dash-card" onclick="goToSlide(21)"><div class="dash-icon">🤝</div><div class="dash-title">4. Latihan Bersama</div></div>
+            <div class="dash-card" style="border-color:var(--rose);" onclick="goToSlide(22)"><div class="dash-icon" style="color:var(--rose);">📝</div><div class="dash-title" style="color:var(--rose);">5. Kesimpulan &amp; Latihan Mandiri</div></div>
+        </div>
+    </div>
+
+    <div id="slide18" class="slide-content">
+        <h2 class="section-title">💬 DISKUSI PEMANTIK</h2>
+        <div class="glass-box" style="max-width:980px;">
+            <div class="phenom-box">
+                <span class="emoji">🤝</span>
+                <p>Dua orang sedang menerima hadiah. Orang pertama menerima hadiah dengan tangan terbuka dan senang (mengeluarkan energi positif, misalnya melompat kegirangan). Orang kedua menerima hadiah dengan ogah-ogahan (butuh dorongan). Manakah yang lebih mudah menerima hadiah?</p>
+            </div>
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">👥 Diskusikan bersama kelompokmu (7 menit):</p>
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#ecfeff; padding:1.1rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q1: Kalau "hadiah" diibaratkan elektron yang ditangkap atom, apa yang menentukan mudah atau sulitnya atom menangkap elektron?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g3d1')">💡 PETUNJUK</button>
+                    <div id="g3d1" class="hidden-answer"><strong>Tarikan inti terhadap elektron</strong>. Semakin kuat inti menarik elektron, semakin mudah atom menangkap elektron.</div>
+                </div>
+                <div style="background:#fff7ed; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q2: Atom F dan Cl sama-sama golongan VIIA (butuh 1 elektron untuk stabil). Menurutmu, mana yang lebih "bernapsu" menarik elektron?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g3d2')">💡 PETUNJUK</button>
+                    <div id="g3d2" class="hidden-answer"><strong>F</strong>, karena jari-jarinya lebih kecil, sehingga tarikan inti ke elektron lebih kuat dibandingkan Cl.</div>
+                </div>
+                <div style="background:#f0fdf4; padding:1.1rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q3: Apakah atom natrium (golongan IA) mudah menangkap elektron? Mengapa?</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g3d3')">💡 PETUNJUK</button>
+                    <div id="g3d3" class="hidden-answer"><strong>Tidak</strong>. Na sudah memiliki 1 elektron di kulit terluar dan cenderung melepaskannya. Na tidak "butuh" tambahan elektron untuk stabil.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide19" class="slide-content">
+        <h2 class="section-title">🔍 PENEMUAN TERBIMBING</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:1rem;">Perhatikan data afinitas elektron (AE) berikut:</p>
+
+            <table class="trend-table">
+                <tr><th>Unsur</th><th>Konfigurasi</th><th>AE (kJ/mol)</th></tr>
+                <tr><td>F</td><td>2 . 7</td><td>−328</td></tr>
+                <tr><td>Cl</td><td>2 . 8 . 7</td><td>−349</td></tr>
+                <tr><td>Br</td><td>2 . 8 . 18 . 7</td><td>−325</td></tr>
+                <tr><td>I</td><td>2 . 8 . 18 . 18 . 7</td><td>−295</td></tr>
+            </table>
+
+            <div class="step-flow" style="margin-top:1.2rem;">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <p>Semua unsur adalah halogen (VIIA), cenderung menangkap 1 elektron. Nilai AE bertanda <strong>negatif</strong>, yang berarti <strong>melepaskan energi</strong> ketika menangkap elektron.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <p>Semakin <strong>negatif</strong> nilai AE, semakin besar kecenderungan atom menerima elektron.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <p>Tren dari F ke I: nilai AE <strong>makin positif</strong> (makin kecil kecenderungan menangkap elektron) karena jari-jari makin besar.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <p>Perhatikan: Cl (−349) &gt; F (−328)! Ini <strong>pengecualian</strong> karena F terlalu kecil, sehingga tolakan antar-elektron di kulit 2 sangat kuat.</p>
+                </div>
+            </div>
+
+            <div style="background:#fffbeb; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent); margin-top:1rem;">
+                <p style="font-weight:800;">🧠 <strong>Pertanyaan kritis:</strong> Mengapa gas mulia (He, Ne, Ar) memiliki afinitas elektron yang sangat rendah (bahkan positif)?</p>
+                <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.6rem;" onclick="revealAnswer('g3k')">Jawab</button>
+                <div id="g3k" class="hidden-answer">Karena gas mulia sudah <strong>stabil (oktet penuh)</strong>. Menambah elektron akan mengganggu kestabilannya dan memerlukan energi (bukan melepaskan).</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide20" class="slide-content">
+        <h2 class="section-title">📖 MATERI — AFINITAS ELEKTRON</h2>
+        <div class="materi-box" style="border-top:8px solid var(--secondary);">
+            <div style="background:#f0fdf4; padding:1.4rem; border-radius:16px; border-left:8px solid var(--secondary);">
+                <p style="font-weight:900; font-size:1.2rem; color:var(--secondary);">Definisi</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:1.05rem; line-height:1.7; margin-top:0.5rem;">
+                    <strong>Afinitas elektron (AE)</strong> adalah <strong>energi yang dilepaskan ketika suatu atom netral dalam fase gas menerima satu elektron</strong> untuk membentuk ion negatif.
+                </p>
+                <div class="eq-display highlight" style="font-size:1.1rem; margin-top:0.8rem;">
+                    X(g) + e⁻ → X⁻(g) + energi
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top:1.3rem;">
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; color:var(--secondary);">⬇️ DALAM SATU GOLONGAN (↑ ke ↓)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        AE <strong style="color:var(--secondary);">semakin KECIL</strong> (nilai makin positif).<br>
+                        <strong>Alasan:</strong> jari-jari atom makin besar → tarikan inti ke elektron yang akan masuk makin lemah.
+                    </p>
+                    <div class="eq-display" style="font-size:0.95rem;">F &gt; Cl &gt; Br &gt; I (kecuali Cl &gt; F)</div>
+                </div>
+                <div style="background:#fff1f2; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; color:var(--rose);">➡️ DALAM SATU PERIODE (← ke →)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        AE <strong style="color:var(--rose);">semakin BESAR</strong> (nilai makin negatif).<br>
+                        <strong>Alasan:</strong> jari-jari makin kecil → muatan inti makin besar → lebih mudah menarik elektron.
+                    </p>
+                    <div class="eq-display" style="font-size:0.95rem;">C &lt; N &lt; O &lt; F</div>
+                </div>
+            </div>
+
+            <div style="margin-top:1.3rem; background:#f8fafc; padding:1.1rem 1.3rem; border-radius:14px; border:2px solid #a5f3fc;">
+                <p style="font-weight:900; color:var(--primary-dark);">📌 Fakta Penting tentang Afinitas Elektron:</p>
+                <ul style="font-weight:700; color:var(--text-light); font-size:1rem; margin-left:1.2rem; line-height:1.9;">
+                    <li>Halogen (VIIA) memiliki AE paling besar karena hanya butuh <strong>1 elektron</strong> untuk stabil.</li>
+                    <li>Golongan IIA (Be, Mg) memiliki AE kecil (bahkan positif) karena konfigurasi <strong>ns² penuh</strong>.</li>
+                    <li>Golongan VIIIA sangat rendah/positif karena sudah stabil.</li>
+                    <li>Nitrogen (N) juga memiliki AE rendah karena konfigurasi <strong>2p³ setengah penuh</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide21" class="slide-content">
+        <h2 class="section-title">🤝 LATIHAN BERSAMA</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div style="background:#ecfeff; padding:1.2rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800;">📝 Soal 1: Mengapa unsur halogen (VIIA) memiliki afinitas elektron paling besar?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg3a')">JAWABAN</button>
+                    <div id="lbg3a" class="hidden-answer">Karena halogen hanya butuh <strong>1 elektron</strong> lagi untuk mencapai konfigurasi oktet stabil. Jari-jarinya relatif kecil sehingga tarikan inti kuat → mudah menangkap elektron.</div>
+                </div>
+
+                <div style="background:#fff7ed; padding:1.2rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800;">📝 Soal 2: Mengapa afinitas elektron Cl lebih besar daripada F? Bukankah F lebih elektronegatif?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg3b')">JAWABAN</button>
+                    <div id="lbg3b" class="hidden-answer">
+                        Karena atom F sangat kecil, sehingga <strong>tolakan antar-elektron</strong> di kulit 2 (yang sudah berisi 7 elektron) sangat kuat. Akibatnya, elektron baru yang masuk justru kurang stabil. Pada Cl, ukurannya lebih besar, sehingga tolakan lebih kecil dan elektron baru lebih stabil.
+                    </div>
+                </div>
+
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800;">📝 Soal 3: Urutkan AE dari yang terkecil: O, S, Se, Te</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg3c')">JAWABAN</button>
+                    <div id="lbg3c" class="hidden-answer">Semua golongan VIA, dari atas ke bawah AE berkurang (nilai makin positif):<br><strong>Te &lt; Se &lt; S &lt; O</strong></div>
+                </div>
+
+                <div style="background:#fdf2f8; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800;">📝 Soal 4: Mengapa unsur golongan IIA memiliki afinitas elektron rendah?</p>
+                    <button class="btn-reveal rose" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg3d')">JAWABAN</button>
+                    <div id="lbg3d" class="hidden-answer">Karena konfigurasi elektronnya <strong>ns² penuh</strong>. Menambah elektron akan mengganggu kestabilan dan memerlukan energi, sehingga AE-nya rendah.</div>
+                </div>
+
+                <div style="background:#fffbeb; padding:1.2rem; border-radius:14px; border-left:6px solid var(--amber);">
+                    <p style="font-weight:800;">📝 Soal 5: Apa perbedaan utama antara energi ionisasi dan afinitas elektron?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg3e')">JAWABAN</button>
+                    <div id="lbg3e" class="hidden-answer">
+                        <strong>EI</strong> = energi yang <em>diperlukan</em> untuk <strong>melepas</strong> elektron.<br>
+                        <strong>AE</strong> = energi yang <em>dilepaskan</em> ketika atom <strong>menangkap</strong> elektron.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide22" class="slide-content">
+        <h2 class="section-title" style="color:var(--rose);">📝 KESIMPULAN &amp; LATIHAN MANDIRI</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose); max-width:1000px;">
+            <div style="background:#fff1f2; padding:1.3rem; border-radius:16px; border-left:8px solid var(--rose);">
+                <p style="font-weight:900; font-size:1.15rem; color:var(--rose);">🔖 Kesimpulan Gerbang 3</p>
+                <ul style="font-weight:700; color:var(--text); font-size:1rem; margin-left:1.2rem; line-height:1.9; margin-top:0.5rem;">
+                    <li>AE = energi yang dilepas ketika atom menangkap 1 elektron.</li>
+                    <li><strong>Golongan (↓):</strong> AE menurun.</li>
+                    <li><strong>Periode (→):</strong> AE meningkat.</li>
+                    <li>Halogen memiliki AE terbesar; gas mulia &amp; IIA memiliki AE terkecil.</li>
+                    <li>Pengecualian: Cl &gt; F karena tolakan elektron pada F.</li>
+                </ul>
+            </div>
+
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin:1.3rem 0 0.8rem;">✏️ Latihan Mandiri:</p>
+
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">1. Jelaskan definisi afinitas elektron!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm3-1')">KUNCI</button>
+                    <div id="lm3-1" class="hidden-answer">Energi yang dilepaskan ketika atom netral fase gas menerima satu elektron untuk membentuk ion negatif.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">2. Dalam satu golongan dari atas ke bawah, afinitas elektron semakin ______.</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm3-2')">KUNCI</button>
+                    <div id="lm3-2" class="hidden-answer">Semakin <strong>kecil</strong> karena jari-jari atom bertambah besar, tarikan inti ke elektron yang masuk makin lemah.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">3. Mengapa unsur N (2, 5) memiliki AE lebih kecil dibanding O (2, 6)?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm3-3')">KUNCI</button>
+                    <div id="lm3-3" class="hidden-answer">Karena N memiliki konfigurasi 2p³ yang <strong>setengah penuh</strong> sehingga lebih stabil. O dengan 2p⁴ lebih mudah menerima elektron untuk menuju kestabilan.</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">4. Urutkan dari AE terbesar: F, Cl, Br, I</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm3-4')">KUNCI</button>
+                    <div id="lm3-4" class="hidden-answer">Cl &gt; F &gt; Br &gt; I. (Cl lebih besar dari F karena alasan tolakan elektron pada atom F.)</div>
+                </div>
+
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">5. Mengapa unsur gas mulia tidak memiliki kecenderungan menangkap elektron?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm3-5')">KUNCI</button>
+                    <div id="lm3-5" class="hidden-answer">Karena konfigurasi elektronnya sudah <strong>penuh (oktet)</strong>. Menambah elektron akan mengganggu kestabilan dan membutuhkan energi.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         GERBANG 4 — KEELEKTRONEGATIFAN (Slide 23–28)
+    ========================================================== -->
+
+    <div id="slide23" class="slide-content">
+        <h2 class="section-title">🎣 GERBANG 4 — KEELEKTRONEGATIFAN</h2>
+        <div class="dash-grid" style="max-width:1050px;">
+            <div class="dash-card" onclick="goToSlide(24)"><div class="dash-icon">💬</div><div class="dash-title">1. Diskusi Pemantik</div></div>
+            <div class="dash-card" onclick="goToSlide(25)"><div class="dash-icon">🔍</div><div class="dash-title">2. Penemuan Terbimbing</div></div>
+            <div class="dash-card" onclick="goToSlide(26)"><div class="dash-icon">📖</div><div class="dash-title">3. Materi Detail</div></div>
+            <div class="dash-card" onclick="goToSlide(27)"><div class="dash-icon">🤝</div><div class="dash-title">4. Latihan Bersama</div></div>
+            <div class="dash-card" style="border-color:var(--rose);" onclick="goToSlide(28)"><div class="dash-icon" style="color:var(--rose);">📝</div><div class="dash-title" style="color:var(--rose);">5. Kesimpulan &amp; Latihan Mandiri</div></div>
+        </div>
+    </div>
+
+    <div id="slide24" class="slide-content">
+        <h2 class="section-title">💬 DISKUSI PEMANTIK</h2>
+        <div class="glass-box" style="max-width:980px;">
+            <div class="phenom-box">
+                <span class="emoji">⚽</span>
+                <p>Dalam sebuah pertandingan tarik tambang, ada dua tim dengan kekuatan berbeda. Tim A sangat kuat, Tim B lemah. Ke arah manakah tali akan tertarik? Bagaimana jika "tali" itu adalah elektron dan "tim" itu adalah atom-atom yang berikatan?</p>
+            </div>
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">👥 Diskusikan bersama kelompokmu (7 menit):</p>
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#ecfeff; padding:1.1rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q1: Dalam ikatan HCl, H dan Cl "berebut" elektron. Menurutmu, siapa yang "menang"? Mengapa?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g4d1')">💡 PETUNJUK</button>
+                    <div id="g4d1" class="hidden-answer"><strong>Cl "menang"</strong>, karena Cl memiliki tarikan inti terhadap elektron lebih kuat (keelektronegatifan lebih tinggi). Ikatan jadi polar.</div>
+                </div>
+                <div style="background:#fff7ed; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q2: Apa yang menentukan "siapa yang menang" dalam perebutan elektron? Kaitkan dengan posisi di tabel periodik!</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g4d2')">💡 PETUNJUK</button>
+                    <div id="g4d2" class="hidden-answer">Unsur di <strong>kanan-atas</strong> tabel periodik (F, O, N, Cl) memiliki keelektronegatifan tinggi dan cenderung menarik elektron lebih kuat.</div>
+                </div>
+                <div style="background:#f0fdf4; padding:1.1rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q3: Jika dua atom memiliki keelektronegatifan sama, jenis ikatan apa yang terbentuk? Dan jika sangat berbeda?</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g4d3')">💡 PETUNJUK</button>
+                    <div id="g4d3" class="hidden-answer">Jika <strong>sama</strong> → ikatan kovalen nonpolar (contoh: Cl₂). Jika <strong>sangat berbeda</strong> → ikatan ionik (contoh: NaCl).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide25" class="slide-content">
+        <h2 class="section-title">🔍 PENEMUAN TERBIMBING</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:1rem;">Perhatikan data keelektronegatifan (skala Pauling):</p>
+
+            <table class="trend-table">
+                <tr><th>Unsur</th><th>Gol.</th><th>KE</th></tr>
+                <tr><td>Li</td><td>IA</td><td>1,0</td></tr>
+                <tr><td>Be</td><td>IIA</td><td>1,5</td></tr>
+                <tr><td>B</td><td>IIIA</td><td>2,0</td></tr>
+                <tr><td>C</td><td>IVA</td><td>2,5</td></tr>
+                <tr><td>N</td><td>VA</td><td>3,0</td></tr>
+                <tr><td>O</td><td>VIA</td><td>3,5</td></tr>
+                <tr><td>F</td><td>VIIA</td><td>4,0</td></tr>
+            </table>
+
+            <div class="step-flow" style="margin-top:1.2rem;">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <p>Dalam satu <strong>periode</strong> (Li → F), nilai keelektronegatifan naik dari 1,0 menjadi 4,0.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <p>Dalam satu <strong>golongan</strong> (F → I), nilai KE turun dari 4,0 (F) → 3,0 (Cl) → 2,8 (Br) → 2,5 (I).</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <p>Unsur dengan KE tertinggi = <strong>F (4,0)</strong>. Unsur dengan KE terendah = <strong>Fr / Cs (~0,7–0,8)</strong>.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <p>Kesimpulan: atom kecil dengan muatan inti besar → tarikan elektron kuat → KE tinggi.</p>
+                </div>
+            </div>
+
+            <div style="background:#fffbeb; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent); margin-top:1rem;">
+                <p style="font-weight:800;">🧠 <strong>Pertanyaan kritis:</strong> Atom H memiliki KE 2,1 sedangkan Na 0,9. Ikatan H–Cl bersifat polar, sedangkan Na–Cl ionik. Apa hubungan KE dengan jenis ikatan?</p>
+                <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.6rem;" onclick="revealAnswer('g4k')">Jawab</button>
+                <div id="g4k" class="hidden-answer">Selisih KE menentukan jenis ikatan: selisih kecil (&lt;0,4) = kovalen nonpolar; 0,4–1,7 = kovalen polar; &gt;1,7 = ionik. Na–Cl selisih 2,1 → ionik. H–Cl selisih 0,9 → polar.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide26" class="slide-content">
+        <h2 class="section-title">📖 MATERI — KEELEKTRONEGATIFAN</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose);">
+            <div style="background:#fff1f2; padding:1.4rem; border-radius:16px; border-left:8px solid var(--rose);">
+                <p style="font-weight:900; font-size:1.2rem; color:var(--rose);">Definisi</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:1.05rem; line-height:1.7; margin-top:0.5rem;">
+                    <strong>Keelektronegatifan</strong> adalah <strong>kemampuan/kecenderungan suatu atom untuk menarik elektron ke arah dirinya sendiri dalam suatu ikatan kimia</strong>. Skala yang paling umum digunakan adalah <strong>skala Pauling</strong>.
+                </p>
+            </div>
+
+            <div class="grid-2" style="margin-top:1.3rem;">
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; color:var(--secondary);">⬇️ DALAM SATU GOLONGAN (↑ ke ↓)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        KE <strong style="color:var(--secondary);">semakin KECIL</strong>.<br>
+                        <strong>Alasan:</strong> jari-jari atom bertambah besar, tarikan inti ke elektron ikatan makin lemah.
+                    </p>
+                    <div class="eq-display" style="font-size:0.95rem;">F &gt; Cl &gt; Br &gt; I</div>
+                </div>
+                <div style="background:#fff1f2; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; color:var(--rose);">➡️ DALAM SATU PERIODE (← ke →)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        KE <strong style="color:var(--rose);">semakin BESAR</strong>.<br>
+                        <strong>Alasan:</strong> jari-jari makin kecil, muatan inti makin besar, tarikan inti ke elektron ikatan makin kuat.
+                    </p>
+                    <div class="eq-display" style="font-size:0.95rem;">Li &lt; Be &lt; B &lt; C &lt; N &lt; O &lt; F</div>
+                </div>
+            </div>
+
+            <div style="margin-top:1.3rem; background:#f8fafc; padding:1.1rem 1.3rem; border-radius:14px; border:2px solid #a5f3fc;">
+                <p style="font-weight:900; color:var(--primary-dark);">📌 Kegunaan Keelektronegatifan:</p>
+                <ul style="font-weight:700; color:var(--text-light); font-size:1rem; margin-left:1.2rem; line-height:1.9;">
+                    <li>Menentukan <strong>jenis ikatan</strong>: ionik, kovalen polar, atau nonpolar.</li>
+                    <li>Menentukan <strong>arah polaritas</strong> dalam molekul.</li>
+                    <li>Memprediksi <strong>reaktivitas</strong> dan sifat asam-basa senyawa.</li>
+                </ul>
+                <div style="margin-top:0.8rem; background:#fffbeb; padding:0.9rem; border-radius:12px;">
+                    <p style="font-weight:800;">📊 Selisih KE &amp; Jenis Ikatan:</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; margin-top:0.4rem;">
+                        ΔKE &lt; 0,4 → <strong>kovalen nonpolar</strong><br>
+                        0,4 ≤ ΔKE ≤ 1,7 → <strong>kovalen polar</strong><br>
+                        ΔKE &gt; 1,7 → <strong>ionik</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide27" class="slide-content">
+        <h2 class="section-title">🤝 LATIHAN BERSAMA</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div style="background:#ecfeff; padding:1.2rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800;">📝 Soal 1: Mengapa F memiliki keelektronegatifan paling tinggi (4,0)?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg4a')">JAWABAN</button>
+                    <div id="lbg4a" class="hidden-answer">Karena F memiliki jari-jari paling kecil di golongan VIIA, dan muatan inti efektifnya besar, sehingga tarikan inti terhadap elektron sangat kuat.</div>
+                </div>
+
+                <div style="background:#fff7ed; padding:1.2rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800;">📝 Soal 2: Ikatan H–F dan H–I. Mana yang lebih polar? Jelaskan.</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg4b')">JAWABAN</button>
+                    <div id="lbg4b" class="hidden-answer">H–F lebih polar. Karena selisih KE H (2,1) dan F (4,0) = 1,9 (polar kuat), sedangkan H (2,1) dan I (2,5) = 0,4 (polar lemah).</div>
+                </div>
+
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800;">📝 Soal 3: Urutkan KE dari terkecil: Na, Si, Cl, P</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg4c')">JAWABAN</button>
+                    <div id="lbg4c" class="hidden-answer">Periode 3, dari kiri ke kanan KE bertambah:<br><strong>Na &lt; Si &lt; P &lt; Cl</strong></div>
+                </div>
+
+                <div style="background:#fdf2f8; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800;">📝 Soal 4: Ikatan antara K (0,8) dan Br (2,8) — ionik, polar, atau nonpolar? Hitung selisihnya!</p>
+                    <button class="btn-reveal rose" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg4d')">JAWABAN</button>
+                    <div id="lbg4d" class="hidden-answer">ΔKE = 2,8 − 0,8 = 2,0 (&gt;1,7) → <strong>IKATAN IONIK</strong></div>
+                </div>
+
+                <div style="background:#fffbeb; padding:1.2rem; border-radius:14px; border-left:6px solid var(--amber);">
+                    <p style="font-weight:800;">📝 Soal 5: Mengapa gas mulia tidak memiliki nilai keelektronegatifan (atau sangat kecil)?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg4e')">JAWABAN</button>
+                    <div id="lbg4e" class="hidden-answer">Karena gas mulia sudah stabil (oktet penuh) dan tidak cenderung membentuk ikatan, sehingga tidak ada nilai KE yang bermakna.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide28" class="slide-content">
+        <h2 class="section-title" style="color:var(--rose);">📝 KESIMPULAN &amp; LATIHAN MANDIRI</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose); max-width:1000px;">
+            <div style="background:#fff1f2; padding:1.3rem; border-radius:16px; border-left:8px solid var(--rose);">
+                <p style="font-weight:900; font-size:1.15rem; color:var(--rose);">🔖 Kesimpulan Gerbang 4</p>
+                <ul style="font-weight:700; color:var(--text); font-size:1rem; margin-left:1.2rem; line-height:1.9; margin-top:0.5rem;">
+                    <li>KE = kemampuan atom menarik elektron dalam ikatan.</li>
+                    <li><strong>Golongan (↓):</strong> KE menurun.</li>
+                    <li><strong>Periode (→):</strong> KE meningkat.</li>
+                    <li>F memiliki KE tertinggi (4,0); Fr/Cs terendah.</li>
+                    <li>Selisih KE menentukan jenis ikatan (ionik/polar/nonpolar).</li>
+                </ul>
+            </div>
+
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin:1.3rem 0 0.8rem;">✏️ Latihan Mandiri:</p>
+
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">1. Jelaskan pengertian keelektronegatifan!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm4-1')">KUNCI</button>
+                    <div id="lm4-1" class="hidden-answer">Kecenderungan suatu atom untuk menarik elektron ke arah dirinya sendiri dalam suatu ikatan kimia.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">2. Dalam satu periode dari kiri ke kanan, keelektronegatifan semakin ______.</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm4-2')">KUNCI</button>
+                    <div id="lm4-2" class="hidden-answer">Semakin <strong>besar</strong> karena jari-jari makin kecil dan muatan inti makin besar.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">3. Mana yang lebih elektronegatif: O atau S? Mengapa?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm4-3')">KUNCI</button>
+                    <div id="lm4-3" class="hidden-answer"><strong>O</strong>, karena berada di atas S dalam golongan VIA sehingga jari-jarinya lebih kecil dan tarikan inti lebih kuat.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">4. Ikatan N–H (N = 3,0; H = 2,1). Hitung ΔKE dan simpulkan jenis ikatannya!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm4-4')">KUNCI</button>
+                    <div id="lm4-4" class="hidden-answer">ΔKE = 3,0 − 2,1 = 0,9 → berada di antara 0,4 dan 1,7 → <strong>KOVALEN POLAR</strong>.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">5. Urutkan dari KE terkecil: Li, F, C, O</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm4-5')">KUNCI</button>
+                    <div id="lm4-5" class="hidden-answer">Periode 2, dari kiri ke kanan KE bertambah:<br><strong>Li &lt; C &lt; O &lt; F</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         GERBANG 5 — LOGAM & NONLOGAM (Slide 29–34)
+    ========================================================== -->
+
+    <div id="slide29" class="slide-content">
+        <h2 class="section-title" style="color:var(--violet);">🔩 GERBANG 5 — LOGAM, NONLOGAM, METALOID</h2>
+        <div class="dash-grid" style="max-width:1050px;">
+            <div class="dash-card" onclick="goToSlide(30)"><div class="dash-icon">💬</div><div class="dash-title">1. Diskusi Pemantik</div></div>
+            <div class="dash-card" onclick="goToSlide(31)"><div class="dash-icon">🔍</div><div class="dash-title">2. Penemuan Terbimbing</div></div>
+            <div class="dash-card" onclick="goToSlide(32)"><div class="dash-icon">📖</div><div class="dash-title">3. Materi Detail</div></div>
+            <div class="dash-card" onclick="goToSlide(33)"><div class="dash-icon">🤝</div><div class="dash-title">4. Latihan Bersama</div></div>
+            <div class="dash-card" style="border-color:var(--rose);" onclick="goToSlide(34)"><div class="dash-icon" style="color:var(--rose);">📝</div><div class="dash-title" style="color:var(--rose);">5. Kesimpulan &amp; Latihan Mandiri</div></div>
+        </div>
+    </div>
+
+    <div id="slide30" class="slide-content">
+        <h2 class="section-title">💬 DISKUSI PEMANTIK</h2>
+        <div class="glass-box" style="max-width:980px;">
+            <div class="phenom-box">
+                <span class="emoji">🔌</span>
+                <p>Perhatikan tiga benda berikut: kabel tembaga (menghantarkan listrik), karet isolator (tidak menghantarkan listrik), dan silikon (semikonduktor). Mengapa ketiganya berbeda sifat kelistrikannya?</p>
+            </div>
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">👥 Diskusikan bersama kelompokmu (7 menit):</p>
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#ecfeff; padding:1.1rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q1: Apa yang membuat logam bisa menghantarkan listrik dengan baik?</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g5d1')">💡 PETUNJUK</button>
+                    <div id="g5d1" class="hidden-answer">Logam memiliki <strong>elektron valensi yang mudah bergerak bebas</strong> (elektron terdelokalisasi). Karena mudah lepas, elektron bisa mengalir membawa arus listrik.</div>
+                </div>
+                <div style="background:#fff7ed; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q2: Di sisi mana tabel periodik didominasi oleh logam? Di sisi mana nonlogam? Mengapa?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g5d2')">💡 PETUNJUK</button>
+                    <div id="g5d2" class="hidden-answer">Logam di sisi <strong>kiri-bawah</strong>, nonlogam di sisi <strong>kanan-atas</strong>. Karena logam mudah melepas elektron (elektron valensi sedikit), sedangkan nonlogam cenderung menangkap elektron.</div>
+                </div>
+                <div style="background:#f0fdf4; padding:1.1rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; font-size:1.02rem;">Q3: Apa yang dimaksud dengan metaloid? Mengapa mereka istimewa?</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('g5d3')">💡 PETUNJUK</button>
+                    <div id="g5d3" class="hidden-answer">Metaloid adalah unsur yang memiliki <strong>sifat antara logam dan nonlogam</strong>. Mereka umumnya bersifat <strong>semikonduktor</strong> — sangat penting dalam industri elektronik.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide31" class="slide-content">
+        <h2 class="section-title">🔍 PENEMUAN TERBIMBING</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">Amati peta mini tabel periodik berikut:</p>
+
+            <div class="pt-mini">
+                <div class="pt-cell">H</div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell metalloid">B</div><div class="pt-cell nonmetal">C</div><div class="pt-cell nonmetal">N</div><div class="pt-cell nonmetal">O</div><div class="pt-cell nonmetal">F</div><div class="pt-cell noble">Ne</div>
+                <div class="pt-cell metal">Li</div><div class="pt-cell metal">Be</div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell blank"></div><div class="pt-cell metal">Al</div><div class="pt-cell metalloid">Si</div><div class="pt-cell nonmetal">P</div><div class="pt-cell nonmetal">S</div><div class="pt-cell nonmetal">Cl</div><div class="pt-cell noble">Ar</div>
+                <div class="pt-cell metal">Na</div><div class="pt-cell metal">Mg</div><div class="pt-cell metal">K</div><div class="pt-cell metal">Ca</div><div class="pt-cell metal">Ga</div><div class="pt-cell metalloid">Ge</div><div class="pt-cell metalloid">As</div><div class="pt-cell nonmetal">Se</div><div class="pt-cell nonmetal">Br</div><div class="pt-cell noble">Kr</div>
+                <div class="pt-cell metal">Rb</div><div class="pt-cell metal">Sr</div><div class="pt-cell metal">In</div><div class="pt-cell metal">Sn</div><div class="pt-cell metalloid">Sb</div><div class="pt-cell metalloid">Te</div><div class="pt-cell nonmetal">I</div><div class="pt-cell noble">Xe</div>
+                <div class="pt-cell metal">Cs</div><div class="pt-cell metal">Ba</div><div class="pt-cell metal">Tl</div><div class="pt-cell metal">Pb</div><div class="pt-cell metal">Bi</div><div class="pt-cell metalloid">Po</div><div class="pt-cell nonmetal">At</div><div class="pt-cell noble">Rn</div>
+            </div>
+
+            <div style="margin-top:1rem; background:#f8fafc; padding:1rem 1.2rem; border-radius:12px; border:2px solid #a5f3fc;">
+                <p style="font-weight:800;">🎨 Keterangan warna:</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; margin-top:0.4rem;">
+                    🟨 <strong>Logam</strong> (kiri-bawah) · 🟩 <strong>Nonlogam</strong> (kanan-atas) · 🟪 <strong>Metaloid</strong> (perbatasan) · 🟦 <strong>Gas Mulia</strong> (golongan VIIIA)
+                </p>
+            </div>
+
+            <div class="step-flow" style="margin-top:1.2rem;">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <p>Perhatikan bahwa <strong>logam</strong> mendominasi sisi kiri-bawah tabel periodik. Semakin ke kanan-atas, jumlah nonlogam bertambah.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <p>Antara logam dan nonlogam terdapat "zona perbatasan" yang dihuni oleh <strong>metaloid</strong> (B, Si, Ge, As, Sb, Te, Po).</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <p>Golongan VIIIA (gas mulia) berada di paling kanan, sangat stabil, dan tidak reaktif.</p>
+                </div>
+            </div>
+
+            <div style="background:#fffbeb; padding:1.1rem; border-radius:14px; border-left:6px solid var(--accent); margin-top:1rem;">
+                <p style="font-weight:800;">🧠 <strong>Pertanyaan kritis:</strong> Mengapa sifat logam <em>bertambah</em> dari atas ke bawah dalam satu golongan?</p>
+                <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.6rem;" onclick="revealAnswer('g5k')">Jawab</button>
+                <div id="g5k" class="hidden-answer">Karena jari-jari atom bertambah besar, elektron terluar makin mudah dilepaskan. Semakin mudah melepas elektron, semakin kuat sifat logamnya.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide32" class="slide-content">
+        <h2 class="section-title">📖 MATERI — LOGAM, NONLOGAM, METALOID</h2>
+        <div class="materi-box" style="border-top:8px solid var(--violet);">
+            <p style="font-weight:700; color:var(--text-light); font-size:1.05rem;">Berdasarkan sifat kelogamannya, unsur dibedakan menjadi tiga kategori utama:</p>
+
+            <div class="grid-3" style="margin-top:1.2rem;">
+                <div style="background:#fff7ed; padding:1.4rem; border-radius:16px; border-top:8px solid var(--accent);">
+                    <div style="font-size:2.5rem; text-align:center;">🔩</div>
+                    <p style="font-weight:900; text-align:center; color:#b45309; font-size:1.15rem;">LOGAM</p>
+                    <ul style="font-weight:700; color:var(--text-light); font-size:0.95rem; margin-left:1.1rem; line-height:1.8; margin-top:0.5rem;">
+                        <li>Penghantar panas &amp; listrik baik</li>
+                        <li>Keras, mengkilap, dapat ditempa</li>
+                        <li>Umumnya padat (kecuali Hg)</li>
+                        <li>Titik leleh &amp; didih tinggi</li>
+                        <li>Mudah melepas elektron</li>
+                        <li>Terletak di kiri-bawah</li>
+                    </ul>
+                </div>
+                <div style="background:#f0fdf4; padding:1.4rem; border-radius:16px; border-top:8px solid var(--secondary);">
+                    <div style="font-size:2.5rem; text-align:center;">🌿</div>
+                    <p style="font-weight:900; text-align:center; color:var(--secondary); font-size:1.15rem;">NONLOGAM</p>
+                    <ul style="font-weight:700; color:var(--text-light); font-size:0.95rem; margin-left:1.1rem; line-height:1.8; margin-top:0.5rem;">
+                        <li>Penghantar panas &amp; listrik jelek</li>
+                        <li>Rapuh, tidak mengkilap</li>
+                        <li>Banyak berwujud gas pada suhu kamar</li>
+                        <li>Titik leleh &amp; didih rendah</li>
+                        <li>Mudah menangkap elektron</li>
+                        <li>Terletak di kanan-atas</li>
+                    </ul>
+                </div>
+                <div style="background:#fdf4ff; padding:1.4rem; border-radius:16px; border-top:8px solid var(--violet);">
+                    <div style="font-size:2.5rem; text-align:center;">⚙️</div>
+                    <p style="font-weight:900; text-align:center; color:var(--violet); font-size:1.15rem;">METALOID</p>
+                    <ul style="font-weight:700; color:var(--text-light); font-size:0.95rem; margin-left:1.1rem; line-height:1.8; margin-top:0.5rem;">
+                        <li>Semikonduktor listrik</li>
+                        <li>Sifat antara logam &amp; nonlogam</li>
+                        <li>Contoh: B, Si, Ge, As, Sb</li>
+                        <li>Terletak di zona perbatasan</li>
+                        <li>Banyak digunakan di industri elektronik</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top:1.4rem;">
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800; color:var(--secondary);">⬇️ DALAM SATU GOLONGAN (↑ ke ↓)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        Sifat <strong>logam bertambah</strong>, sifat nonlogam berkurang.<br>
+                        Contoh: Li (logam) → Cs (logam sangat reaktif).
+                    </p>
+                </div>
+                <div style="background:#fff1f2; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800; color:var(--rose);">➡️ DALAM SATU PERIODE (← ke →)</p>
+                    <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.7;">
+                        Sifat <strong>nonlogam bertambah</strong>, sifat logam berkurang.<br>
+                        Contoh: Na (logam) → Cl (nonlogam).
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top:1.3rem; background:#f8fafc; padding:1.1rem 1.3rem; border-radius:14px; border:2px solid #a5f3fc;">
+                <p style="font-weight:900; color:var(--primary-dark);">📌 Sifat Asam-Basa Oksida (Bonus):</p>
+                <p style="font-weight:700; color:var(--text-light); font-size:0.98rem; line-height:1.8;">
+                    Dari kiri ke kanan dalam satu periode, sifat oksida berubah dari <strong>basa → amfoter → asam</strong>.<br>
+                    Contoh: Na₂O (basa) → Al₂O₃ (amfoter) → SO₃ (asam)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide33" class="slide-content">
+        <h2 class="section-title">🤝 LATIHAN BERSAMA</h2>
+        <div class="glass-box" style="max-width:1000px;">
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <div style="background:#ecfeff; padding:1.2rem; border-radius:14px; border-left:6px solid var(--primary);">
+                    <p style="font-weight:800;">📝 Soal 1: Sebutkan 3 sifat khas logam dan 3 sifat khas nonlogam!</p>
+                    <button class="btn-reveal" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg5a')">JAWABAN</button>
+                    <div id="lbg5a" class="hidden-answer">
+                        <strong>Logam:</strong> penghantar listrik baik, mengkilap, dapat ditempa.<br>
+                        <strong>Nonlogam:</strong> penghantar listrik jelek, rapuh, umumnya gas pada suhu kamar.
+                    </div>
+                </div>
+
+                <div style="background:#fff7ed; padding:1.2rem; border-radius:14px; border-left:6px solid var(--accent);">
+                    <p style="font-weight:800;">📝 Soal 2: Unsur X berada di golongan IA, unsur Y di golongan VIIA, keduanya periode 3. Mana yang bersifat logam?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg5b')">JAWABAN</button>
+                    <div id="lbg5b" class="hidden-answer">X (Na, golongan IA) bersifat <strong>logam</strong>. Y (Cl, golongan VIIA) bersifat <strong>nonlogam</strong>.</div>
+                </div>
+
+                <div style="background:#f0fdf4; padding:1.2rem; border-radius:14px; border-left:6px solid var(--secondary);">
+                    <p style="font-weight:800;">📝 Soal 3: Mengapa silikon (Si) disebut metaloid? Apa kegunaannya?</p>
+                    <button class="btn-reveal sky" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg5c')">JAWABAN</button>
+                    <div id="lbg5c" class="hidden-answer">Si memiliki sifat antara logam dan nonlogam (semikonduktor). Digunakan sebagai bahan utama chip komputer, sel surya, dan transistor.</div>
+                </div>
+
+                <div style="background:#fdf2f8; padding:1.2rem; border-radius:14px; border-left:6px solid var(--rose);">
+                    <p style="font-weight:800;">📝 Soal 4: Urutkan dari yang paling logam: Na, Mg, Al, Si</p>
+                    <button class="btn-reveal rose" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg5d')">JAWABAN</button>
+                    <div id="lbg5d" class="hidden-answer">Dalam periode 3, sifat logam berkurang dari kiri ke kanan:<br><strong>Na &gt; Mg &gt; Al &gt; Si</strong>. Si sudah termasuk metaloid.</div>
+                </div>
+
+                <div style="background:#fffbeb; padding:1.2rem; border-radius:14px; border-left:6px solid var(--amber);">
+                    <p style="font-weight:800;">📝 Soal 5: Mengapa sifat logam bertambah dari atas ke bawah dalam satu golongan?</p>
+                    <button class="btn-reveal amber" style="padding:0.4rem 1.1rem; font-size:0.85rem; margin-top:0.5rem;" onclick="revealAnswer('lbg5e')">JAWABAN</button>
+                    <div id="lbg5e" class="hidden-answer">Karena jari-jari atom bertambah besar, sehingga elektron valensi makin mudah dilepaskan. Semakin mudah melepas elektron → semakin kuat sifat logamnya.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide34" class="slide-content">
+        <h2 class="section-title" style="color:var(--rose);">📝 KESIMPULAN &amp; LATIHAN MANDIRI</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose); max-width:1000px;">
+            <div style="background:#fff1f2; padding:1.3rem; border-radius:16px; border-left:8px solid var(--rose);">
+                <p style="font-weight:900; font-size:1.15rem; color:var(--rose);">🔖 Kesimpulan Gerbang 5</p>
+                <ul style="font-weight:700; color:var(--text); font-size:1rem; margin-left:1.2rem; line-height:1.9; margin-top:0.5rem;">
+                    <li>Unsur dibedakan menjadi logam, nonlogam, dan metaloid.</li>
+                    <li>Logam di kiri-bawah, nonlogam di kanan-atas, metaloid di perbatasan.</li>
+                    <li><strong>Golongan (↓):</strong> sifat logam bertambah.</li>
+                    <li><strong>Periode (→):</strong> sifat nonlogam bertambah.</li>
+                    <li>Sifat oksida: basa → amfoter → asam (kiri ke kanan).</li>
+                </ul>
+            </div>
+
+            <p style="font-weight:900; font-size:1.1rem; color:var(--primary); margin:1.3rem 0 0.8rem;">✏️ Latihan Mandiri:</p>
+
+            <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">1. Sebutkan 3 contoh logam, 3 nonlogam, dan 3 metaloid!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm5-1')">KUNCI</button>
+                    <div id="lm5-1" class="hidden-answer">Logam: Na, Fe, Cu. Nonlogam: O, Cl, S. Metaloid: Si, Ge, As.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">2. Dalam satu periode dari kiri ke kanan, sifat logam semakin ______ dan sifat nonlogam semakin ______.</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm5-2')">KUNCI</button>
+                    <div id="lm5-2" class="hidden-answer">Sifat logam semakin <strong>berkurang</strong>; sifat nonlogam semakin <strong>bertambah</strong>.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">3. Mengapa logam mudah menghantarkan listrik?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm5-3')">KUNCI</button>
+                    <div id="lm5-3" class="hidden-answer">Karena logam memiliki elektron valensi yang mudah bergerak bebas (terdelokalisasi).</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">4. Bandingkan sifat logam antara Na dan K!</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm5-4')">KUNCI</button>
+                    <div id="lm5-4" class="hidden-answer">K lebih logam dari Na karena berada di bawah Na dalam golongan IA — jari-jarinya lebih besar sehingga elektron valensinya lebih mudah dilepaskan.</div>
+                </div>
+                <div style="background:#f8fafc; padding:1.1rem; border-radius:12px; border-left:5px solid var(--primary);">
+                    <p style="font-weight:800;">5. Apa perbedaan utama antara metaloid dan logam?</p>
+                    <button class="btn-reveal" style="padding:0.3rem 1rem; font-size:0.8rem; margin-top:0.4rem;" onclick="revealAnswer('lm5-5')">KUNCI</button>
+                    <div id="lm5-5" class="hidden-answer">Metaloid memiliki sifat antara logam dan nonlogam — umumnya bersifat semikonduktor, sedangkan logam adalah konduktor yang baik.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         GERBANG 6 — KESIMPULAN TOTAL & REFLEKSI (Slide 35–38)
+    ========================================================== -->
+
+    <div id="slide35" class="slide-content">
+        <h2 class="section-title" style="color:var(--rose);">🏆 GERBANG 6 — KESIMPULAN TOTAL</h2>
+        <div class="materi-box" style="border-top:8px solid var(--rose); max-width:1080px;">
+            <p style="font-weight:900; font-size:1.15rem; color:var(--primary); text-align:center; margin-bottom:1rem;">📊 Tabel Rangkuman Sifat Keperiodikan Unsur</p>
+
+            <table class="trend-table">
+                <tr>
+                    <th>Sifat</th>
+                    <th>Golongan (↑ → ↓)</th>
+                    <th>Periode (← → →)</th>
+                    <th>Penyebab Utama</th>
+                </tr>
+                <tr>
+                    <td>Jari-jari atom</td>
+                    <td class="down">↓ Bertambah besar</td>
+                    <td class="up">↑ Semakin kecil</td>
+                    <td>Jumlah kulit &amp; tarikan inti</td>
+                </tr>
+                <tr>
+                    <td>Energi ionisasi</td>
+                    <td class="up">↑ Semakin kecil</td>
+                    <td class="down">↓ Semakin besar</td>
+                    <td>Jari-jari &amp; muatan inti efektif</td>
+                </tr>
+                <tr>
+                    <td>Afinitas elektron</td>
+                    <td class="up">↑ Semakin kecil</td>
+                    <td class="down">↓ Semakin besar</td>
+                    <td>Tarikan inti ke elektron masuk</td>
+                </tr>
+                <tr>
+                    <td>Keelektronegatifan</td>
+                    <td class="up">↑ Semakin kecil</td>
+                    <td class="down">↓ Semakin besar</td>
+                    <td>Jari-jari &amp; muatan inti</td>
+                </tr>
+                <tr>
+                    <td>Sifat logam</td>
+                    <td class="down">↓ Bertambah</td>
+                    <td class="up">↑ Berkurang</td>
+                    <td>Kemudahan melepas elektron</td>
+                </tr>
+                <tr>
+                    <td>Sifat nonlogam</td>
+                    <td class="up">↑ Berkurang</td>
+                    <td class="down">↓ Bertambah</td>
+                    <td>Kemudahan menangkap elektron</td>
+                </tr>
+                <tr>
+                    <td>Sifat basa oksida</td>
+                    <td class="down">↓ Menguat</td>
+                    <td class="up">↑ Melemah</td>
+                    <td>Karakter logam</td>
+                </tr>
+                <tr>
+                    <td>Sifat asam oksida</td>
+                    <td class="up">↑ Melemah</td>
+                    <td class="down">↓ Menguat</td>
+                    <td>Karakter nonlogam</td>
+                </tr>
+            </table>
+
+            <div style="margin-top:1.3rem; background:#ecfeff; padding:1.2rem; border-radius:14px; border-left:6px solid var(--primary);">
+                <p style="font-weight:900; color:var(--primary-dark);">💡 Konsep Kunci Keseluruhan:</p>
+                <ul style="font-weight:700; color:var(--text-light); font-size:1rem; margin-left:1.2rem; line-height:1.9; margin-top:0.4rem;">
+                    <li><strong>Elektron valensi</strong> menentukan kemiripan sifat dalam satu golongan.</li>
+                    <li><strong>Jumlah kulit</strong> menentukan besar-kecilnya jari-jari atom.</li>
+                    <li><strong>Muatan inti efektif</strong> menentukan kuat-lemahnya tarikan terhadap elektron.</li>
+                    <li>Semua sifat keperiodikan dapat dijelaskan dari 3 faktor di atas!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="slide36" class="slide-content">
+        <h2 class="section-title">📝 REFLEKSI DIRI</h2>
+        <div class="glass-box" style="padding:2rem; border:2px solid var(--primary); max-width:1000px;">
+            <p style="font-size:1.25rem; font-weight:900; color:var(--accent); text-align:center; margin-bottom:1.3rem; font-family:var(--font-display);">
+                "Keteraturan adalah bahasa yang Allah gunakan untuk mengajarkan kita tentang harmoni."
+            </p>
+            <p style="font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:1rem; text-align:center;">Jawab pertanyaan refleksi berikut di buku tulismu:</p>
+            <div style="display:flex; flex-direction:column; gap:1rem; font-size:1.02rem; font-weight:700; color:var(--text-light);">
+                <div class="reflect-card">
+                    <strong>1. Insight:</strong> Apa konsep paling penting yang kamu pelajari hari ini tentang sifat keperiodikan unsur? Jelaskan dengan bahasamu sendiri.
+                </div>
+                <div class="reflect-card" style="border-left-color:var(--secondary);">
+                    <strong>2. Koneksi:</strong> Bagaimana konsep jari-jari atom membantu kita memahami mengapa unsur F sangat reaktif, sedangkan Cs sangat mudah melepas elektron?
+                </div>
+                <div class="reflect-card" style="border-left-color:var(--accent);">
+                    <strong>3. Aplikasi:</strong> Berikan satu contoh penerapan sifat keperiodikan dalam kehidupan sehari-hari atau industri!
+                </div>
+                <div class="reflect-card" style="border-left-color:var(--rose);">
+                    <strong>4. Kesimpulan:</strong> Tulis 3–4 kalimat yang merangkum apa itu sifat keperiodikan unsur dan mengapa penting dipelajari.
+                </div>
+                <div class="reflect-card" style="border-left-color:var(--violet);">
+                    <strong>5. Aksi:</strong> Tuliskan satu kebiasaan kecil yang akan kamu mulai untuk lebih menghargai keteraturan dalam belajar (misalnya membuat jadwal belajar teratur).
+                </div>
+            </div>
+            <p style="text-align:center; font-weight:800; font-style:italic; font-size:1.1rem; margin-top:1.5rem; color:var(--primary);">"Terima kasih atas semangatmu, Penjelajah Unsur!"</p>
+        </div>
+    </div>
+
+    <div id="slide37" class="slide-content">
+        <h2 class="section-title" style="color:var(--accent);">🏆 TUGAS AKHIR</h2>
+        <div class="glass-box" style="max-width:1080px; padding:2rem; overflow-y:auto; max-height:68vh;">
+            <h3 style="text-align:center; font-family:var(--font-display); font-size:1.3rem; margin-bottom:1.3rem; color:var(--text);">Kerjakan 10 soal berikut di buku tulismu untuk menunjukkan penguasaanmu atas semua gerbang!</h3>
+            <div style="display:flex; flex-direction:column; gap:1rem; font-size:1rem; font-weight:700; color:var(--text); line-height:1.55;">
+                <div style="background:#ecfeff; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--primary);">
+                    <strong>1. (Gerbang 1)</strong> Jelaskan definisi jari-jari atom dan sebutkan tren-nya dalam golongan dan periode. Sertakan contoh!
+                </div>
+                <div style="background:#fff7ed; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--accent);">
+                    <strong>2. (Gerbang 1)</strong> Urutkan jari-jari atom dari terkecil: <em>Na, Mg, K, Ca, Rb</em> (nomor atom: 11, 12, 19, 20, 37). Jelaskan!
+                </div>
+                <div style="background:#f0fdf4; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--secondary);">
+                    <strong>3. (Gerbang 2)</strong> Jelaskan definisi energi ionisasi. Mengapa EI₁ &lt; EI₂ &lt; EI₃? Kaitkan dengan muatan ion!
+                </div>
+                <div style="background:#fff1f2; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--rose);">
+                    <strong>4. (Gerbang 2)</strong> Diketahui unsur X memiliki EI₁ = 738 kJ/mol dan EI₂ = 1451 kJ/mol, sedangkan unsur Y memiliki EI₁ = 496 kJ/mol dan EI₂ = 4562 kJ/mol. Tentukan golongan masing-masing unsur!
+                </div>
+                <div style="background:#fdf4ff; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--violet);">
+                    <strong>5. (Gerbang 3)</strong> Jelaskan definisi afinitas elektron. Mengapa halogen memiliki AE paling besar? Berikan contohnya!
+                </div>
+                <div style="background:#ecfeff; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--primary);">
+                    <strong>6. (Gerbang 3)</strong> Mengapa Cl memiliki AE lebih besar daripada F, padahal F lebih elektronegatif? (Ini soal HOTS!)
+                </div>
+                <div style="background:#fff7ed; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--accent);">
+                    <strong>7. (Gerbang 4)</strong> Diketahui unsur A (KE = 0,9), B (KE = 2,1), C (KE = 3,0), D (KE = 4,0). Tentukan pasangan yang akan membentuk ikatan:
+                    <br>(a) ionik, (b) kovalen polar, (c) kovalen nonpolar. Jelaskan!
+                </div>
+                <div style="background:#f0fdf4; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--secondary);">
+                    <strong>8. (Gerbang 5)</strong> Sebutkan 3 perbedaan utama antara logam dan nonlogam. Sertakan contoh masing-masing 3 unsur!
+                </div>
+                <div style="background:#fff1f2; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--rose);">
+                    <strong>9. (HOTS)</strong> Atom X memiliki konfigurasi elektron 2, 8, 1 dan atom Y memiliki konfigurasi 2, 8, 7. Jika X dan Y berikatan, ikatan apa yang terbentuk? Jelaskan berdasarkan konsep keperiodikan!
+                </div>
+                <div style="background:#fdf4ff; padding:1rem 1.2rem; border-radius:15px; border-left:6px solid var(--violet);">
+                    <strong>10. (HOTS — Sintesis)</strong> Buatlah tabel yang membandingkan empat sifat keperiodikan (jari-jari, EI, AE, KE) untuk unsur Na, Mg, Cl, dan Ar. Simpulkan bagaimana pola sifat-sifat tersebut berubah dari Na ke Ar!
+                </div>
+            </div>
+            <p style="text-align:center; font-weight:800; font-size:1rem; margin-top:1.5rem; color:var(--primary);">📌 Kumpulkan tugasmu pada pertemuan berikutnya. Semangat, Penjelajah Unsur! 🌊</p>
+        </div>
+    </div>
+
+    <div id="slide38" class="slide-content">
+        <h2 class="section-title" style="color:var(--primary);">🎓 PENUTUP</h2>
+        <div class="glass-box" style="max-width:900px; text-align:center; padding:2.5rem;">
+            <div style="font-size:4rem; margin-bottom:1rem;">🌊✨</div>
+            <p style="font-family:var(--font-display); font-size:1.6rem; color:var(--primary); line-height:1.4; margin-bottom:1.2rem;">
+                "Belajarlah dari tabel periodik —<br>setiap unsur punya tempatnya,<br>setiap sifat punya polanya.<br>Begitu pula dirimu: istimewa dan teratur."
+            </p>
+            <div style="background:#ecfeff; padding:1.2rem; border-radius:16px; border-left:6px solid var(--primary); text-align:left; margin:1rem 0;">
+                <p style="font-weight:900; color:var(--primary-dark); font-size:1.05rem;">🔑 Pesan Kunci:</p>
+                <p style="font-weight:700; color:var(--text-light); line-height:1.75;">
+                    Semua sifat keperiodikan unsur dapat dijelaskan melalui tiga faktor utama: <strong>jumlah kulit elektron</strong>, <strong>muatan inti efektif</strong>, dan <strong>konfigurasi elektron valensi</strong>. Jika kamu memahami ketiganya, kamu dapat memprediksi sifat hampir semua unsur!
+                </p>
+            </div>
+            <p style="font-family:var(--font-arabic); font-size:1.8rem; color:var(--primary); margin-top:1.2rem;">وَاللَّهُ يَعْلَمُ وَأَنتُمْ لَا تَعْلَمُونَ</p>
+            <p style="font-weight:700; color:var(--text-light); font-size:1rem; margin-top:0.4rem;">"Dan Allah mengetahui, sedang kamu tidak mengetahui." (QS. Al-Baqarah: 216)</p>
+            <p style="font-weight:900; color:var(--primary); font-size:1.15rem; margin-top:1.5rem;">— Dhevira Aptia, S.Pd. —</p>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-footer">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ KEMBALI</button>
+        <button class="nav-btn dash" id="dashboardBtn" onclick="goToSlide(4)">🚀 PETA</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">LANJUT ▶</button>
+    </div>
+
+</div>
+
+<script>
+    const totalSlides = 38;
+    let currentSlide = 1;
+
+    function showSlide(n) {
+        if (n < 1 || n > totalSlides) return;
+        document.querySelectorAll('.slide-content').forEach(s => s.classList.remove('active'));
+        const target = document.getElementById('slide' + n);
+        if (target) target.classList.add('active');
+        currentSlide = n;
+
+        const dashBtn = document.getElementById('dashboardBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        dashBtn.style.display = (n <= 4) ? 'none' : 'flex';
+        prevBtn.style.display = (n === 1) ? 'none' : 'flex';
+        nextBtn.style.display = (n === totalSlides) ? 'none' : 'flex';
+
+        const c = document.querySelector('.app-container');
+        if (c) c.scrollTo(0, 0);
+    }
+
+    function changeSlide(dir) { showSlide(currentSlide + dir); }
+    function goToSlide(n) { showSlide(n); }
+
+    function revealAnswer(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('show');
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); changeSlide(1); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); changeSlide(-1); }
+    });
+
+    showSlide(1);
+</script>
+
+</body>
+</html>
